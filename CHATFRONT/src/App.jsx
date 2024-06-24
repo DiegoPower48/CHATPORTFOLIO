@@ -56,7 +56,8 @@ function App() {
           type="text"
           placeholder="escribe un mensaje"
           id="input"
-          {...register("comentario")}
+          autoComplete="off"
+          {...register("comentario", { required: true })}
           className="escribir "
         />
       </form>

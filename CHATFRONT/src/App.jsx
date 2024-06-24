@@ -1,7 +1,7 @@
 import io from "socket.io-client";
 import { useState, useEffect } from "react";
 
-const socket = io("https://chatweb-i8se.onrender.com/", {
+const socket = io("https://chatportfolio.onrender.com", {
   transports: ["websocket", "polling"], // Asegúrate de que los transportes están configurados correctamente
   withCredentials: true,
 });

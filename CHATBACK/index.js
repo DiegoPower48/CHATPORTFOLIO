@@ -23,10 +23,7 @@ const app = express();
 
 // Configurar CORS
 const corsOptions = {
-  origin: [
-    "http://localhost:5173",
-    "https://chat-web-backend-lemon.vercel.app",
-  ], // Agrega todos los dominios que necesites
+  origin: ["http://localhost:5173", "https://chatportfolio.onrender.com"], // Agrega todos los dominios que necesites
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type"],
   credentials: true,

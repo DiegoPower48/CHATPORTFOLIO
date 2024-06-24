@@ -10,19 +10,17 @@ body {
   border: 0;
   margin: 0;
   padding: 0;
+  height: 700px;
 }
 .container {
-  width: 1218px;
   display: grid;
+  padding-left: 200px;
   grid-template-rows: 1fr;
-  grid-template-columns: 20% 70% 20%;
+  grid-template-columns: 1fr 4fr 1fr;
 }
 
 .chat {
-  height: 100vh;
   color-scheme: light dark;
-  left: 0;
-  right: 0;
   grid-column-start: 2;
   grid-column-end: 3;
 }
@@ -41,7 +39,6 @@ body {
 
 .mensajes {
   width: 100%;
-
   overflow-y: scroll;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
@@ -77,19 +74,25 @@ body {
   position: sticky;
   bottom: 0px;
 }
-/* 
+
 @media (max-width: 1160px) {
-  .mensajes,
-  .escribir,
-  .cuadro-chat,
-  .chat,
-  .titulo-chat {
+  .container {
+    padding-left: 100px;
+    grid-template-columns: 1fr 8fr 1fr;
   }
-} */
+}
+
+@media (max-width: 770px) {
+  .container {
+    padding-left: 50px;
+    grid-template-columns: 1fr 10fr 1fr;
+  }
+}
 
 @media (max-width: 650px) {
   .container {
-    grid-template-columns: 100%;
+    padding-left: 0px;
+    grid-template-columns: 1fr;
   }
   .chat {
     grid-column-start: 1;

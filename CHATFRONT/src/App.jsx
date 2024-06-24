@@ -43,7 +43,9 @@ function App() {
   return (
     <div className="chat items-center justify-center">
       <form onSubmit={handleSubmit(enviaralback)} className="cuadro-chat ">
-        <h1 className="titulo-chat ">PROYECTO CHAT</h1>
+        <h1 translate="no" className="titulo-chat ">
+          PROYECTO CHAT
+        </h1>
 
         <ul className="mensajes">
           {messages.map((message, i) => (

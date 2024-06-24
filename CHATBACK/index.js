@@ -33,10 +33,7 @@ app.use(cors(corsOptions));
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: [
-      "http://localhost:5173",
-      "https://chat-web-backend-lemon.vercel.app",
-    ], // Asegúrate de que esta URL sea la correcta
+    origin: ["http://localhost:5173", "https://chatportfolio.onrender.com"], // Asegúrate de que esta URL sea la correcta
     methods: ["GET", "POST"],
     credentials: true,
   },

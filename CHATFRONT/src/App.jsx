@@ -1,5 +1,5 @@
 import io from "socket.io-client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 
 const socket = io("https://chatportfolio.onrender.com", {
@@ -14,13 +14,20 @@ function App() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   const enviaralback = (data) => {
     // const newMessage = {
     //   body: message,
     // };
     setMessages([...messages, data.comentario]);
     socket.emit("message", data.comentario);
+
     reset();
+    scrollToBottom();
   };
 
   socket.on("message", (msg) => {
@@ -37,6 +44,9 @@ function App() {
 
   const recieveMessage = (message) =>
     setMessages((state) => [...state, message]);
+  scrollToBottom();
+
+  useEffect(scrollToBottom, [messages]);
 
   /* HASTA AQUI*/
 
@@ -54,6 +64,7 @@ function App() {
                 <span className="texto-enviados">{message}</span>
               </li>
             ))}
+            <div ref={messagesEndRef} />
           </ul>
           <input
             type="text"

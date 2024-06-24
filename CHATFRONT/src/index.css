@@ -6,35 +6,47 @@
   color-scheme: light dark;
 }
 
-.chat {
-  color-scheme: light dark;
-  height: 100%;
-  width: 50%;
-  place-content: center;
-  position: relative;
+body {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 1218px;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 20% 70% 20%;
+}
 
-  margin-left: 300px;
-  margin-right: 300px;
+.chat {
+  height: 100vh;
+  color-scheme: light dark;
+  left: 0;
+  right: 0;
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 .titulo-chat {
   color: rgb(223, 213, 194);
   font-size: 40px;
   text-align: center;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: black;
 }
 .cuadro-chat {
-  margin-left: 108px;
-  margin-right: 108px;
 }
 
 .mensajes {
-  width: 400px;
+  width: 100%;
+
   overflow-y: scroll;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   word-wrap: break-word;
-  max-height: 700px;
-  height: 700px;
+  max-height: 783px;
 }
 
 .mensajes::-webkit-scrollbar {
@@ -45,23 +57,42 @@
   padding: 0.5rem 1rem;
   background: bisque;
   color: black;
-  border-radius: 9999px;
+  border-radius: 30px;
 }
 
 .mensajes > li:nth-child(odd) {
   background: black;
   color: white;
-  border-radius: 9999px;
+  border-radius: 30px;
 }
 
 .escribir {
   border-radius: 9999px;
   border: 1px solid #eee;
-  margin: 4px;
+  margin: 5px;
   width: 100%;
   height: 20px;
   padding: 20px;
   color: white;
   position: sticky;
   bottom: 0px;
+}
+/* 
+@media (max-width: 1160px) {
+  .mensajes,
+  .escribir,
+  .cuadro-chat,
+  .chat,
+  .titulo-chat {
+  }
+} */
+
+@media (max-width: 650px) {
+  .container {
+    grid-template-columns: 100%;
+  }
+  .chat {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
 }

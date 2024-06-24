@@ -41,28 +41,30 @@ function App() {
   /* HASTA AQUI*/
 
   return (
-    <div className="chat items-center justify-center">
-      <form onSubmit={handleSubmit(enviaralback)} className="cuadro-chat ">
-        <h1 translate="no" className="titulo-chat ">
-          PROYECTO CHAT
-        </h1>
+    <div className="container">
+      <div className="chat">
+        <form onSubmit={handleSubmit(enviaralback)} className="cuadro-chat ">
+          <h1 translate="no" className="titulo-chat ">
+            PROYECTO CHAT
+          </h1>
 
-        <ul className="mensajes">
-          {messages.map((message, i) => (
-            <li key={i}>
-              <span className="texto-enviados">{message}</span>
-            </li>
-          ))}
-        </ul>
-        <input
-          type="text"
-          placeholder="escribe un mensaje"
-          id="input"
-          autoComplete="off"
-          {...register("comentario", { required: true })}
-          className="escribir "
-        />
-      </form>
+          <ul className="mensajes">
+            {messages.map((message, i) => (
+              <li key={i}>
+                <span className="texto-enviados">{message}</span>
+              </li>
+            ))}
+          </ul>
+          <input
+            type="text"
+            placeholder="escribe un mensaje"
+            id="input"
+            autoComplete="off"
+            {...register("comentario", { required: true })}
+            className="escribir "
+          />
+        </form>
+      </div>
     </div>
   );
 }

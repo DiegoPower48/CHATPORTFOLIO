@@ -44,6 +44,7 @@ body {
   -ms-overflow-style: none;
   word-wrap: break-word;
   max-height: 783px;
+  overflow-y: auto;
 }
 
 .mensajes::-webkit-scrollbar {

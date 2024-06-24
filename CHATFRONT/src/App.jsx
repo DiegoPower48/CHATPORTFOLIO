@@ -8,7 +8,7 @@ const socket = io("https://chatportfolio.onrender.com", {
 });
 
 function App() {
-  const { register, watch, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   /* CONFIGURAR TODO ESTO*/
   const [message, setMessage] = useState("");
@@ -23,16 +23,11 @@ function App() {
     // const newMessage = {
     //   body: message,
     // };
-    setMessages([...messages, data.comentario]);
+    setMessages((prevMessages) => [...prevMessages, data.comentario]);
     socket.emit("message", data.comentario);
 
     reset();
-    scrollToBottom();
   };
-
-  socket.on("message", (msg) => {
-    setMessage(msg);
-  });
 
   useEffect(() => {
     socket.on("message", recieveMessage);
@@ -42,21 +37,19 @@ function App() {
     };
   }, []);
 
-  const recieveMessage = (message) =>
-    setMessages((state) => [...state, message]);
-  scrollToBottom();
+  const recieveMessage = (message) => {
+    setMessages((prevMessages) => [...prevMessages, message]);
+  };
 
   useEffect(scrollToBottom, [messages]);
 
   /* HASTA AQUI*/
 
   return (
-    <div className="container">
+    <div translate="no" className="container">
       <div className="chat">
         <form onSubmit={handleSubmit(enviaralback)} className="cuadro-chat ">
-          <h1 translate="no" className="titulo-chat ">
-            PROYECTO CHAT
-          </h1>
+          <h1 className="titulo-chat ">PROYECTO CHAT</h1>
 
           <ul className="mensajes">
             {messages.map((message, i) => (

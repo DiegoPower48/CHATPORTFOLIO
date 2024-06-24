@@ -1,5 +1,6 @@
 import io from "socket.io-client";
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 const socket = io("https://chatportfolio.onrender.com", {
   transports: ["websocket", "polling"], // Asegúrate de que los transportes están configurados correctamente
@@ -7,17 +8,19 @@ const socket = io("https://chatportfolio.onrender.com", {
 });
 
 function App() {
+  const { register, watch, handleSubmit, reset } = useForm();
+
   /* CONFIGURAR TODO ESTO*/
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const enviaralback = (data) => {
     // const newMessage = {
     //   body: message,
     // };
-    setMessages([...messages, message]);
-    socket.emit("message", message);
+    setMessages([...messages, data.comentario]);
+    socket.emit("message", data.comentario);
+    reset();
   };
 
   socket.on("message", (msg) => {
@@ -38,27 +41,24 @@ function App() {
   /* HASTA AQUI*/
 
   return (
-    <div className="h-screen bg-zinc-800 text-white flex items-center justify-center">
-      <form onSubmit={handleSubmit} className="bg-zinc-900 p-10">
-        <h1 className="text-2xl font-bold my-2 ">CHAT REACT</h1>
-        <input
-          type="text"
-          placeholder="escribe un mensaje"
-          onChange={(e) => setMessage(e.target.value)}
-          className="border-2 border-zinc-500 p-2 w-full text-black"
-        />{" "}
-        <ul>
+    <div className="chat items-center justify-center">
+      <form onSubmit={handleSubmit(enviaralback)} className="cuadro-chat ">
+        <h1 className="titulo-chat ">PROYECTO CHAT</h1>
+
+        <ul className="mensajes">
           {messages.map((message, i) => (
-            <li
-              key={i}
-              className={`my-2 p-2 table rounded-md 
-                bg-black ml-auto
-              }`}
-            >
-              <span className="text-md">{message}</span>
+            <li key={i}>
+              <span className="texto-enviados">{message}</span>
             </li>
           ))}
         </ul>
+        <input
+          type="text"
+          placeholder="escribe un mensaje"
+          id="input"
+          {...register("comentario")}
+          className="escribir "
+        />
       </form>
     </div>
   );

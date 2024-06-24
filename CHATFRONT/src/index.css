@@ -1,3 +1,67 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+}
+
+.chat {
+  color-scheme: light dark;
+  height: 100%;
+  width: 50%;
+  place-content: center;
+  position: relative;
+
+  margin-left: 300px;
+  margin-right: 300px;
+}
+
+.titulo-chat {
+  color: rgb(223, 213, 194);
+  font-size: 40px;
+  text-align: center;
+}
+.cuadro-chat {
+  margin-left: 108px;
+  margin-right: 108px;
+}
+
+.mensajes {
+  width: 400px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  word-wrap: break-word;
+  max-height: 700px;
+  height: 700px;
+}
+
+.mensajes::-webkit-scrollbar {
+  display: none;
+}
+
+.mensajes > li {
+  padding: 0.5rem 1rem;
+  background: bisque;
+  color: black;
+  border-radius: 9999px;
+}
+
+.mensajes > li:nth-child(odd) {
+  background: black;
+  color: white;
+  border-radius: 9999px;
+}
+
+.escribir {
+  border-radius: 9999px;
+  border: 1px solid #eee;
+  margin: 4px;
+  width: 100%;
+  height: 20px;
+  padding: 20px;
+  color: white;
+  position: sticky;
+  bottom: 0px;
+}

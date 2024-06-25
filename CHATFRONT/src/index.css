@@ -2,14 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: light dark;
-}
-
 body {
   border: 0;
   margin: 0;
   padding: 0;
+  background-color: #121212;
 }
 .container {
   height: 700px;

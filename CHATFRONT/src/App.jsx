@@ -64,7 +64,7 @@ function App() {
             type="text"
             placeholder="escribe un mensaje"
             id="input"
-            autoComplete="off"
+            autoComplete="new-message"
             {...register("comentario", { required: true })}
             className="escribir "
           />

@@ -7,6 +7,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #121212;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .container {
   height: 700px;
@@ -70,12 +71,14 @@ body {
 
 .escribir {
   border-radius: 9999px;
-  border: 3px solid #eee;
+  border: 3px solid black;
+  border-style: double;
+  background-color: white;
   margin-top: -20px;
   width: 100%;
   height: 30px;
   padding: 20px;
-  color: white;
+  color: black;
   position: sticky;
   top: 0px;
 }

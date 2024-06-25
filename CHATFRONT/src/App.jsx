@@ -64,7 +64,7 @@ function App() {
             name="foo"
             autocomplete="foo"
             type="text"
-            placeholder="escribe un mensaje"
+            placeholder="Escribe un mensaje xD"
             id="input"
             {...register("comentario", { required: true })}
             className="escribir "

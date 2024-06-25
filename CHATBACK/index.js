@@ -26,7 +26,7 @@ const corsOptions = {
   origin: [
     "http://localhost:5173",
     "https://chatportfolio.onrender.com",
-    "https://chatportfolio-hzom.vercel.app/",
+    "https://chatportfolio-hzom.vercel.app",
   ], // Agrega todos los dominios que necesites
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type"],
@@ -40,7 +40,7 @@ const io = new Server(server, {
     origin: [
       "http://localhost:5173",
       "https://chatportfolio.onrender.com",
-      "https://chatportfolio-hzom.vercel.app/",
+      "https://chatportfolio-hzom.vercel.app",
     ], // Asegúrate de que esta URL sea la correcta
     methods: ["GET", "POST"],
     credentials: true,

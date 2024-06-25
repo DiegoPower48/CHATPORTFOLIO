@@ -61,10 +61,11 @@ function App() {
             <div ref={messagesEndRef} />
           </ul>
           <input
+            name="otp"
             type="text"
             placeholder="escribe un mensaje"
             id="input"
-            autoComplete="new-message"
+            autoComplete="off"
             {...register("comentario", { required: true })}
             className="escribir "
           />

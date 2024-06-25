@@ -2,8 +2,8 @@ import io from "socket.io-client";
 import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 
-const socket = io("https://chatportfolio-hzom.vercel.app/", {
-  transports: ["websocket", "polling"], // Asegúrate de que los transportes están configurados correctamente
+const socket = io("https://chatportfolio.onrender.com", {
+  transports: ["websocket", "polling"],
   withCredentials: true,
 });
 
@@ -15,6 +15,7 @@ function App() {
   const [messages, setMessages] = useState([]);
 
   const messagesEndRef = useRef(null);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -30,16 +31,16 @@ function App() {
   };
 
   useEffect(() => {
+    const recieveMessage = (message) => {
+      setMessages((prevMessages) => [...prevMessages, message]);
+    };
+
     socket.on("message", recieveMessage);
 
     return () => {
       socket.off("message", recieveMessage);
     };
   }, []);
-
-  const recieveMessage = (message) => {
-    setMessages((prevMessages) => [...prevMessages, message]);
-  };
 
   useEffect(scrollToBottom, [messages]);
 

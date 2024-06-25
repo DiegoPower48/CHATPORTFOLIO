@@ -21,13 +21,12 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
-// Configurar CORS
 const corsOptions = {
   origin: [
     "http://localhost:5173",
     "https://chatportfolio.onrender.com",
     "https://chatportfolio-hzom.vercel.app",
-  ], // Agrega todos los dominios que necesites
+  ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type"],
   credentials: true,
@@ -41,11 +40,11 @@ const io = new Server(server, {
       "http://localhost:5173",
       "https://chatportfolio.onrender.com",
       "https://chatportfolio-hzom.vercel.app",
-    ], // Asegúrate de que esta URL sea la correcta
+    ],
     methods: ["GET", "POST"],
     credentials: true,
   },
-  transports: ["websocket", "polling"], // Asegúrate de que los transportes están configurados correctamente
+  transports: ["websocket", "polling"],
   connectionStateRecovery: {
     maxDisconnectionDuration: 2 * 60 * 1000,
   },

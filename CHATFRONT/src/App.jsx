@@ -2,7 +2,7 @@ import io from "socket.io-client";
 import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 
-const socket = io("https://chatportfolio.onrender.com", {
+const socket = io("https://chatportfolio-hzom.vercel.app/", {
   transports: ["websocket", "polling"], // Asegúrate de que los transportes están configurados correctamente
   withCredentials: true,
 });

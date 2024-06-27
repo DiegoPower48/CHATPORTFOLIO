@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "mdb-react-ui-kit": "^8.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.0",
     "react-hot-toast": "^2.4.1",
+    "react-router-dom": "^6.24.0",
     "socket.io-client": "^4.7.5"
   },
   "devDependencies": {

@@ -2,7 +2,7 @@ import io from "socket.io-client";
 import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 
-const socket = io("https://chatportfolio.onrender.com", {
+const socket = io("http://localhost:5000", {
   transports: ["websocket", "polling"],
   withCredentials: true,
 });
@@ -16,6 +16,8 @@ function Chat() {
 
   const messagesEndRef = useRef(null);
 
+  const room = 1;
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -25,7 +27,7 @@ function Chat() {
     //   body: message,
     // };
     setMessages((prevMessages) => [...prevMessages, data.comentario]);
-    socket.emit("message", data.comentario);
+    socket.emit(`chat${room}`, data.comentario);
 
     reset();
   };
@@ -35,10 +37,10 @@ function Chat() {
       setMessages((prevMessages) => [...prevMessages, message]);
     };
 
-    socket.on("message", recieveMessage);
+    socket.on(`chat${room}`, recieveMessage);
 
     return () => {
-      socket.off("message", recieveMessage);
+      socket.off(`chat${room}`, recieveMessage);
     };
   }, []);
 

@@ -5,7 +5,7 @@ require("dotenv").config();
 const cors = require("cors");
 const http = require("http");
 const { Server } = require("socket.io");
-const Item = require("./model/model.js");
+const sockets = require("./socket/sockets");
 
 const BD_URI = process.env.BD_URI;
 
@@ -50,34 +50,12 @@ const io = new Server(server, {
   },
 });
 
-io.on("connection", (socket) => {
-  console.log("un usuario se ha conectado");
-  socket.on("disconnect", () => {
-    console.log("un usuario se ha desconectado");
-  });
-  socket.on("message", async (msg) => {
-    try {
-      await Item.create({
-        comentario: msg,
-      });
-    } catch (e) {
-      console.log(e);
-    }
-    socket.broadcast.emit("message", msg);
-  });
-  if (!socket.recovered) {
-    try {
-      Item.find({}).then((recuperado) => {
-        recuperado.map((message) => socket.emit("message", message.comentario));
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }
-});
+sockets(io);
 
 app.use(logger("dev"));
 
 server.listen(port, () => {
   console.log(`escuchando el puerto: ${port}`);
 });
+
+module.exports = io;

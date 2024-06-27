@@ -1,6 +1,7 @@
 import io from "socket.io-client";
 import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 
 const socket = io("https://chatportfolio.onrender.com", {
   transports: ["websocket", "polling"],
@@ -62,7 +63,7 @@ function App() {
           </ul>
           <input
             name="foo"
-            autocomplete="foo"
+            autoComplete="foo"
             type="text"
             placeholder="Escribe un mensaje xD"
             id="input"
@@ -71,6 +72,7 @@ function App() {
           />
         </form>
       </div>
+      <Toaster />
     </div>
   );
 }

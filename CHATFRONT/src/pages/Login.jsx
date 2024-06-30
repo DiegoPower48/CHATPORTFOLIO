@@ -14,16 +14,18 @@ function Login() {
   const { register, reset, handleSubmit, watch } = useForm();
 
   const informacionFormulario = watch();
-  const room = watch(room);
+
+  const room = watch("room");
+
   const Datos = () => {
     axios
-      .get("http://localhost:3000/loginin", informacionFormulario)
+      .post("http://localhost:3000/loginin", informacionFormulario)
       .then((response) => {
+        console.log(response.data);
         reset();
-        console.log(response);
       })
       .catch((error) => {
-        console.log("error en axios");
+        console.log(error.response.data);
       });
   };
 
@@ -46,16 +48,21 @@ function Login() {
             <MDBInput
               wrapperClass="mb-4"
               label="Email address"
-              id="form1"
               type="email"
               {...register("nombre", { required: true })}
             />
             <MDBInput
               wrapperClass="mb-4"
               label="Password"
-              id="form2"
               type="password"
               {...register("contraseña", { required: true })}
+            />
+            <MDBInput
+              wrapperClass="mb-4"
+              label="Email address"
+              placeholder="room?"
+              type="email"
+              {...register("room", { required: true })}
             />
 
             <div className="text-center pt-1 mb-5 pb-1">

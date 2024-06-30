@@ -1,6 +1,6 @@
 /* RECUPERANDO DATOS DE ROOM Y USUARIO */
 
-const Room = 1;
+const Room = 3;
 
 /* CREANDO EL MODELO */
 

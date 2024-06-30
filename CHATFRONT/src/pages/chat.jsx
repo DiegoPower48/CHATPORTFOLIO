@@ -16,7 +16,7 @@ function Chat() {
 
   const messagesEndRef = useRef(null);
 
-  const room = 1;
+  const room = 3;
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });

@@ -10,7 +10,9 @@ function Chat() {
 
   const messagesEndRef = useRef(null);
   const room = localStorage.getItem("room");
-
+  const socket = io.connect("https://chatportfolio.onrender.com", {
+    query: `room=${room}`,
+  });
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -24,9 +26,7 @@ function Chat() {
   useEffect(() => {
     const receiveMessage = (message) =>
       setMessages((state) => [...state, message]);
-    const socket = io.connect("https://chatportfolio.onrender.com", {
-      query: `room=${room}`,
-    });
+
     console.log("emitinedo");
     socket.on(`chat${room}`, receiveMessage);
 

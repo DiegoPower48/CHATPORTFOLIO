@@ -26,6 +26,7 @@ const corsOptions = {
     "http://localhost:5173",
     "https://chatportfolio.onrender.com",
     "https://chatportfolio-hzom.vercel.app",
+    "https://chatportfolio.vercel.app",
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type"],

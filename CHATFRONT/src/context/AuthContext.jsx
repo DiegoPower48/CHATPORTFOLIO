@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
         user,
         errors,
         loading,
-        logout,
+        // logout,
         selectRoom,
         room,
       }}

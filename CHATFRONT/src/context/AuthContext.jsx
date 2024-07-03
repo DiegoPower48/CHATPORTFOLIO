@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
   const signup = async (ruta, data) => {
     try {
       const res = await axios.post(
-        `chatportfolios-production.up.railway.app/${ruta}`,
+        `chatportfolios-production.up.railway.app/loginin`,
         { withCredentials: true },
         data
       );

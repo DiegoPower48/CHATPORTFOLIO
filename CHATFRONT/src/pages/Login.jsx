@@ -13,36 +13,23 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
-import io from "socket.io-client";
-
-const socket = io("http://localhost:5000/", {
-  transports: ["websocket", "polling"],
-  withCredentials: true,
-});
-
 function Login() {
   const { register, reset, handleSubmit, watch } = useForm();
-  const {
-    signup,
-    isAutenticated,
-    errors: RegisterErrors,
-    selectRoom,
-  } = useAuth();
+  const { signup, isAutenticated, errors: RegisterErrors } = useAuth();
   const navigate = useNavigate();
 
   const roomselected = watch("room");
 
   const Datos = async (data) => {
+    localStorage.setItem("room", roomselected);
     toast
       .promise(signup("loginin", data), {
         loading: "⏳⏳  LOGEANDO......",
         success: <b>"LOGIN CORRECTO!!!!🚀"</b>,
         error: <b>DATOS INCORRECTOS</b>,
       })
-      .then(() => {
-        selectRoom(roomselected);
-        socket.emit("room", roomselected);
-        localStorage.setItem("room", roomselected);
+      .then(async () => {
+        console.log(roomselected);
         reset();
         console.log("response");
       })

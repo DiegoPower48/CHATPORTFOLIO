@@ -1,35 +1,41 @@
 /* RECUPERANDO DATOS DE ROOM Y USUARIO */
 
-const room = "meroo";
-
 /* CREANDO EL MODELO */
 
 const mongoose = require("mongoose");
-
-const itemSchema = new mongoose.Schema(
-  {
-    comentario: { type: String },
-  },
-  { collection: `CHAT${room}` }
-);
-
-const Item = mongoose.model(`Item${room}`, itemSchema);
 
 /* CREANDO EL SOCKET */
 
 const socket = (io) => {
   io.on("connection", (socket) => {
+    const room = socket.handshake.query.room;
     console.log("un usuario se ha conectado");
+
+    const schemaName = `Item${room}`;
+    const collectionName = `CHAT${room}`;
+
+    // Verificar si el modelo ya existe
+    const Item =
+      mongoose.models[schemaName] ||
+      mongoose.model(
+        schemaName,
+        new mongoose.Schema(
+          {
+            comentario: { type: String },
+          },
+          { collection: collectionName }
+        )
+      );
+
     socket.on("disconnect", () => {
       console.log("un usuario se ha desconectado");
     });
     socket.on(`chat${room}`, async (msg) => {
-      console.log(msg);
       try {
         await Item.create({
           comentario: msg,
         });
-        console.log("guardando el mensaje");
+        console.log(`guardando el mensaje "${msg}"`);
       } catch (e) {
         console.log("error en create");
       }
@@ -39,7 +45,6 @@ const socket = (io) => {
       try {
         Item.find({}).then((recuperado) => {
           recuperado.map((message) => {
-            console.log(message.comentario);
             socket.emit(`chat${room}`, message.comentario);
           });
         });

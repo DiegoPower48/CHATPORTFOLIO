@@ -22,7 +22,7 @@ function Chat() {
 
   const enviaralback = (mensaje) => {
     socket.emit(`chat${room}`, mensaje.comentario);
-    setMessages([...messages, mensaje.comentario]);
+
     reset();
   };
 

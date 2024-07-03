@@ -41,6 +41,7 @@ const io = new Server(server, {
       "http://localhost:5173",
       "https://chatportfolio.onrender.com",
       "https://chatportfolio-hzom.vercel.app",
+      "https://chatportfolio.vercel.app",
     ],
     methods: ["GET", "POST"],
     credentials: true,

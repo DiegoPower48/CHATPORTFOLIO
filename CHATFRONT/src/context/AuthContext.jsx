@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import axios from "./Authaxios";
+import axios from "axios";
 import Cookies from "js-cookie";
 
 // import dotenv from "dotenv";
@@ -28,6 +28,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post(
         `chatportfolios-production.up.railway.app/${ruta}`,
+        { withCredentials: true },
         data
       );
       setUser(res.data);

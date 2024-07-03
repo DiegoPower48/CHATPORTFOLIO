@@ -11,9 +11,8 @@ function Navbar() {
         {isAutenticated ? (
           <>
             <li>
-              <Link to="/login" onClick={() => logout()}>
-                logout
-              </Link>
+              {/* <Link to="/login" onClick={() => logout()}> */}
+              <Link to="/login">logout</Link>
             </li>
           </>
         ) : (

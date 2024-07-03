@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "serve dist -s -n -p $PORT",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -19,6 +20,7 @@
     "react-hook-form": "^7.52.0",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.24.0",
+    "serve": "^14.2.3",
     "socket.io-client": "^4.7.5"
   },
   "devDependencies": {

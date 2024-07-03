@@ -1,52 +1,44 @@
-import io from "socket.io-client";
 import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
+import io from "socket.io-client";
 
-const socket = io("http://localhost:5000", {
+const socket = io("http://localhost:5000/", {
   transports: ["websocket", "polling"],
   withCredentials: true,
 });
 
-function Chat() {
-  const { register, handleSubmit, reset } = useForm();
+const room = localStorage.getItem("room");
 
-  /* CONFIGURAR TODO ESTO*/
+function Chat() {
+  const { register, handleSubmit, reset, watch } = useForm();
+
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
   const messagesEndRef = useRef(null);
 
-  const room = 3;
-
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const enviaralback = (data) => {
-    // const newMessage = {
-    //   body: message,
-    // };
-    setMessages((prevMessages) => [...prevMessages, data.comentario]);
-    socket.emit(`chat${room}`, data.comentario);
-
+  const enviaralback = (mensaje) => {
+    socket.emit(`chat${room}`, mensaje.comentario);
+    setMessages([...messages, mensaje.comentario]);
     reset();
   };
 
   useEffect(() => {
-    const recieveMessage = (message) => {
-      setMessages((prevMessages) => [...prevMessages, message]);
-    };
+    const receiveMessage = (message) =>
+      setMessages((state) => [...state, message]);
 
-    socket.on(`chat${room}`, recieveMessage);
+    socket.on(`chat${room}`, receiveMessage);
 
     return () => {
-      socket.off(`chat${room}`, recieveMessage);
+      socket.off(`chat${room}`, receiveMessage);
     };
   }, []);
 
   useEffect(scrollToBottom, [messages]);
-
-  /* HASTA AQUI*/
 
   return (
     <div translate="no" className="container">
@@ -64,7 +56,7 @@ function Chat() {
           </ul>
           <input
             name="foo"
-            autoComplete="foo"
+            autoComplete="off"
             type="text"
             placeholder="Escribe un mensaje xD"
             id="input"

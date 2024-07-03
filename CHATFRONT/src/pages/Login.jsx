@@ -6,28 +6,56 @@ import {
   MDBCol,
   MDBInput,
 } from "mdb-react-ui-kit";
-import axios from "axios";
+
+import { useAuth } from "../context/AuthContext";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
+
+import io from "socket.io-client";
+
+const socket = io("http://localhost:5000/", {
+  transports: ["websocket", "polling"],
+  withCredentials: true,
+});
 
 function Login() {
   const { register, reset, handleSubmit, watch } = useForm();
+  const {
+    signup,
+    isAutenticated,
+    errors: RegisterErrors,
+    selectRoom,
+  } = useAuth();
+  const navigate = useNavigate();
 
-  const informacionFormulario = watch();
+  const roomselected = watch("room");
 
-  const room = watch("room");
-
-  const Datos = () => {
-    axios
-      .post("http://localhost:3000/loginin", informacionFormulario)
-      .then((response) => {
-        console.log(response.data);
+  const Datos = async (data) => {
+    toast
+      .promise(signup("loginin", data), {
+        loading: "⏳⏳  LOGEANDO......",
+        success: <b>"LOGIN CORRECTO!!!!🚀"</b>,
+        error: <b>DATOS INCORRECTOS</b>,
+      })
+      .then(() => {
+        selectRoom(roomselected);
+        socket.emit("room", roomselected);
+        localStorage.setItem("room", roomselected);
         reset();
+        console.log("response");
       })
       .catch((error) => {
-        console.log(error.response.data);
+        console.log(error);
       });
   };
+
+  useEffect(() => {
+    if (isAutenticated) {
+      navigate("/");
+    }
+  }, [isAutenticated, navigate]);
 
   return (
     <MDBContainer className="my-5 gradient-form">

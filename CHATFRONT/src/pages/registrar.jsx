@@ -1,22 +1,23 @@
-import axios from "axios";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
+import { useAuth } from "../context/AuthContext";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Registrar() {
   const { register, reset, handleSubmit, watch } = useForm();
 
+  const { signup, isAutenticated, errors: RegisterErrors } = useAuth();
   const informacionFormulario = watch();
+  const navigate = useNavigate();
 
   const Datos = () => {
     toast
-      .promise(
-        axios.post("http://localhost:3000/registro", informacionFormulario),
-        {
-          loading: "⏳⏳  ENVIANDO COMENTARIO......",
-          success: <b>"REGISTRO EXITOSO!!!!🚀"</b>,
-          error: <b>NO SE PUDO GUARDAR</b>,
-        }
-      )
+      .promise(signup("registro", informacionFormulario), {
+        loading: "⏳⏳  REGISTRANDO DATOS......",
+        success: <b>"REGISTRO EXITOSO!!!!🚀"</b>,
+        error: <b>NO SE PUDO GUARDAR</b>,
+      })
       .then((response) => {
         reset();
         console.log(response);
@@ -25,6 +26,12 @@ function Registrar() {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    if (isAutenticated) {
+      navigate("/");
+    }
+  }, [isAutenticated]);
 
   return (
     <>

@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [room, setRoom] = useState(localStorage.getItem("room"));
 
-  const signup = async (ruta, data) => {
+  const signup = async (data) => {
     try {
       const res = await axios.post(
         `chatportfolios-production.up.railway.app/loginin`,

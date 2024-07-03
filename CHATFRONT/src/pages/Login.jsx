@@ -23,7 +23,7 @@ function Login() {
   const Datos = async (data) => {
     localStorage.setItem("room", roomselected);
     toast
-      .promise(signup("loginin", data), {
+      .promise(signup(data), {
         loading: "⏳⏳  LOGEANDO......",
         success: <b>"LOGIN CORRECTO!!!!🚀"</b>,
         error: <b>DATOS INCORRECTOS</b>,

@@ -26,7 +26,10 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (ruta, data) => {
     try {
-      const res = await axios.post(`http://localhost:3000/${ruta}`, data);
+      const res = await axios.post(
+        `portfolio-production-ecd3.up.railway.app/${ruta}`,
+        data
+      );
       setUser(res.data);
       setLoading(false);
       setIsAuthenticated(true);

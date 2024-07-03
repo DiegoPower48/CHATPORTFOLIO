@@ -2,8 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import io from "socket.io-client";
 
-const room = localStorage.getItem("room");
-
 function Chat() {
   const { register, handleSubmit, reset, watch } = useForm();
 
@@ -11,10 +9,7 @@ function Chat() {
   const [messages, setMessages] = useState([]);
 
   const messagesEndRef = useRef(null);
-
-  const socket = io.connect("https://chatportfolio.onrender.com", {
-    query: `room=${room}`,
-  });
+  const room = localStorage.getItem("room");
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -29,6 +24,9 @@ function Chat() {
   useEffect(() => {
     const receiveMessage = (message) =>
       setMessages((state) => [...state, message]);
+    const socket = io.connect("https://chatportfolio.onrender.com", {
+      query: `room=${room}`,
+    });
     console.log("emitinedo");
     socket.on(`chat${room}`, receiveMessage);
 

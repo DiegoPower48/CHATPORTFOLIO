@@ -9,8 +9,9 @@ function Chat() {
   const { register, handleSubmit, reset } = useForm();
 
   const room = localStorage.getItem("room");
+  const usernombre = localStorage.getItem("name");
 
-  const [messages, setMessages] = useState([`hola desde ${room}`]);
+  const [messages, setMessages] = useState([""]);
   const { user } = useAuth();
 
   const messagesEndRef = useRef(null);
@@ -31,9 +32,7 @@ function Chat() {
 
   useEffect(() => {
     console.log(user.nombre);
-    setMessages([
-      "Recuerda que en esta web, esta prohibida la discriminación o su uso para incitar al odio o violencia, cualquier usuario que genere conflictos sera baneado permanentemente",
-    ]);
+    setMessages([]);
     const receiveMessage = (message) =>
       setMessages((state) => [...state, message]);
 
@@ -58,15 +57,21 @@ function Chat() {
             <h1 className={styles.titulochat}>{`SALA: ${room} `}</h1>
 
             <ul className={styles.mensajes}>
+              <li>
+                "Recuerda que en esta web, esta prohibida la discriminación o su
+                uso para incitar al odio o violencia, cualquier usuario que
+                genere conflictos sera baneado permanentemente",
+              </li>
               {messages.map((message, i) => (
                 <li key={i}>
-                  <span>"ACA IRA EL USUARIO":</span>
+                  <span>{usernombre}:</span>
                   <br />
                   <span className={styles.textoenviados}>{message}</span>
                 </li>
               ))}
               <div ref={messagesEndRef} />
             </ul>
+
             <input
               name="foo"
               autoComplete="off"

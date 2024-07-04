@@ -7,6 +7,7 @@ import {
   MDBCol,
   MDBInput,
 } from "mdb-react-ui-kit";
+import { Toast } from "react-bootstrap";
 
 import { useAuth } from "../../context/AuthContext";
 import { useEffect } from "react";
@@ -83,7 +84,7 @@ function Login() {
                 {...register("room", { required: true })}
               />
               <button
-                className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                className={`btn btn-primary btn-block fa-lg ${styles.gradientcustom2} mb-3`}
                 type="submit"
                 onClick={handleSubmit(Datos)}
               >

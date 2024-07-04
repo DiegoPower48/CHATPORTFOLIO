@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import { Navbar } from "react-bootstrap";
 
 function userheader() {
-  const { isAutenticated, logout, user } = useAuth();
+  const { isAutenticated, logout } = useAuth();
   const usernombre = localStorage.getItem("name");
   const handleLogout = () => {
     logout();

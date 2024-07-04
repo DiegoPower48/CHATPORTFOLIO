@@ -1,37 +1,50 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import styles from "./navbar.module.css";
 
-function Navbar() {
-  const { isAutenticated, logout } = useAuth();
+import Container from "react-bootstrap/Container";
+import { Navbar } from "react-bootstrap";
+
+function userheader() {
+  const { isAutenticated, logout, user } = useAuth();
 
   const handleLogout = () => {
     logout();
   };
 
   return (
-    <nav>
-      <h1>Task Manager</h1>
+    <nav className={styles.body}>
       <ul>
         {isAutenticated ? (
           <>
-            <li>
-              <Link to="/login" onClick={handleLogout}>
-                logout
-              </Link>
-            </li>
+            <Navbar className="bg-body-tertiary" data-bs-theme="dark">
+              <Container>
+                <Navbar.Brand href="/login" onClick={handleLogout}>
+                  LOGOUT
+                </Navbar.Brand>
+                <Navbar.Toggle />
+                <Navbar.Collapse className="justify-content-end">
+                  <Navbar.Text>{"LOGEADO COMO: " + user.nombre}</Navbar.Text>
+                </Navbar.Collapse>
+              </Container>
+            </Navbar>
           </>
         ) : (
           <>
-            <li>
-              <Link to="/login">login</Link>
-            </li>
-            <li>
-              <Link to="/registrar">Registrar</Link>
-            </li>
+            <Navbar className="bg-body-tertiary">
+              <Container>
+                <Navbar.Toggle />
+                <Navbar.Collapse className="justify-content-end">
+                  <Navbar.Text>
+                    <Link to="/registrar">Registrar</Link>
+                  </Navbar.Text>
+                </Navbar.Collapse>
+              </Container>
+            </Navbar>
           </>
         )}
       </ul>
     </nav>
   );
 }
-export default Navbar;
+export default userheader;

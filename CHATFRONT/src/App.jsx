@@ -1,17 +1,18 @@
-import Chat from "./pages/chat";
+import Chat from "./pages/chat/chat";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Registrar from "./pages/registrar";
+import Login from "./pages/Login/Login";
+import Registrar from "./pages/Login/registrar";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoutes from "./context/protected";
-import Navbar from "./components/navbar";
+import Userheader from "./components/navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <>
       <AuthProvider>
         <BrowserRouter>
-          <Navbar />
+          <Userheader />
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/registrar" element={<Registrar />} />

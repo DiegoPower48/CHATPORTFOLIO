@@ -1,13 +1,13 @@
+import styles from "./chat.module.css";
 import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import io from "socket.io-client";
 
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 function Chat() {
   const { register, handleSubmit, reset } = useForm();
 
-  const [message, setMessage] = useState("");
   const room = localStorage.getItem("room");
   const [messages, setMessages] = useState([`hola desde ${room}`]);
   const { user } = useAuth();
@@ -47,29 +47,36 @@ function Chat() {
   useEffect(scrollToBottom, [messages]);
 
   return (
-    <div translate="no" className="container">
-      <div className="chat">
-        <form onSubmit={handleSubmit(enviaralback)} className="cuadro-chat ">
-          <h1 className="titulo-chat ">{`SALA: ${room} `}</h1>
+    <div className={styles.body}>
+      <div translate="no" className={styles.container}>
+        <div className={styles.chat}>
+          <form
+            onSubmit={handleSubmit(enviaralback)}
+            className={styles.cuadrochat}
+          >
+            <h1 className={styles.titulochat}>{`SALA: ${room} `}</h1>
 
-          <ul className="mensajes">
-            {messages.map((message, i) => (
-              <li key={i}>
-                <span className="texto-enviados">{message}</span>
-              </li>
-            ))}
-            <div ref={messagesEndRef} />
-          </ul>
-          <input
-            name="foo"
-            autoComplete="off"
-            type="text"
-            placeholder="Escribe un mensaje xD"
-            id="input"
-            {...register("comentario", { required: true })}
-            className="escribir "
-          />
-        </form>
+            <ul className={styles.mensajes}>
+              {messages.map((message, i) => (
+                <li key={i}>
+                  <span>"ACA IRA EL USUARIO":</span>
+                  <br />
+                  <span className={styles.textoenviados}>{message}</span>
+                </li>
+              ))}
+              <div ref={messagesEndRef} />
+            </ul>
+            <input
+              name="foo"
+              autoComplete="off"
+              type="text"
+              placeholder="Escribe un mensaje xD"
+              id="input"
+              {...register("comentario", { required: true })}
+              className={styles.escribir}
+            />
+          </form>
+        </div>
       </div>
     </div>
   );

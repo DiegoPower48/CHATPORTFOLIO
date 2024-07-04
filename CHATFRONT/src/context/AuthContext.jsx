@@ -42,6 +42,8 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     Cookies.remove("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem("room");
     console.log("front: se elimino el token");
     setUser(null);
     setIsAuthenticated(false);

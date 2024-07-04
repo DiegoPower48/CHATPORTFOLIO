@@ -7,7 +7,7 @@ import { Navbar } from "react-bootstrap";
 
 function userheader() {
   const { isAutenticated, logout, user } = useAuth();
-
+  const usernombre = localStorage.getItem("name");
   const handleLogout = () => {
     logout();
   };
@@ -24,7 +24,7 @@ function userheader() {
                 </Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
-                  <Navbar.Text>{"LOGEADO COMO: " + user.nombre}</Navbar.Text>
+                  <Navbar.Text>{"LOGEADO COMO: " + usernombre}</Navbar.Text>
                 </Navbar.Collapse>
               </Container>
             </Navbar>

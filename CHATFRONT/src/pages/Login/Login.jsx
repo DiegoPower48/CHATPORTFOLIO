@@ -20,9 +20,11 @@ function Login() {
   const navigate = useNavigate();
 
   const roomselected = watch("room");
+  const nombre = watch("nombre");
 
   const Datos = async (data) => {
     localStorage.setItem("room", roomselected);
+    localStorage.setItem("name", nombre);
     signup(data)
       .then(() => {
         console.log("sala: ", roomselected);
@@ -42,8 +44,8 @@ function Login() {
   }, [isAutenticated, navigate]);
 
   return (
-    <div className={styles.body}>
-      <MDBContainer className="my-5 gradient-form">
+    <form>
+      <MDBContainer className={`"my - 5" ${styles.gradientform}`}>
         <MDBRow>
           <MDBCol col="6" className="mb-5">
             <div className="d-flex flex-column ms-5">
@@ -53,58 +55,60 @@ function Login() {
                   style={{ width: "185px" }}
                   alt="logo"
                 />
-                <h4 className="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+                <h1 className="mt-1 mb-5 pb-1">BIENVENIDO A MI CHAT 🎉🎉🎉</h1>
               </div>
 
-              <p>Please login to your account</p>
+              <p>PORFAVOR INGRESA TUS DATOS</p>
+              <br />
+
+              <br />
 
               <MDBInput
                 wrapperClass="mb-4"
-                label="Email address"
-                type="email"
+                label="Nombre de usuario"
+                autoComplete="usernane"
                 {...register("nombre", { required: true })}
               />
               <MDBInput
                 wrapperClass="mb-4"
-                label="Password"
+                label="Contraseña"
                 type="password"
+                autoComplete="current-password"
                 {...register("contraseña", { required: true })}
               />
               <MDBInput
                 wrapperClass="mb-4"
-                label="Email address"
+                label="Ingresa la sala a la que deseas conectarte"
                 placeholder="room?"
-                type="email"
                 {...register("room", { required: true })}
               />
+              <button
+                className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                type="submit"
+                onClick={handleSubmit(Datos)}
+              >
+                Log in
+              </button>
 
               <div className="text-center pt-1 mb-5 pb-1">
-                <button type="submit" onClick={handleSubmit(Datos)}>
-                  boton
-                </button>
                 <a className="text-muted" href="#!">
-                  Forgot password?
+                  Olvidaste tu clave 😊
                 </a>
-              </div>
-
-              <div className="d-flex flex-row align-items-center justify-content-center pb-4 mb-4">
-                <p className="mb-0">Don't have an account?</p>
-                <MDBBtn outline className="mx-2" color="danger">
-                  Danger
-                </MDBBtn>
               </div>
             </div>
           </MDBCol>
 
           <MDBCol col="6" className="mb-5">
-            <div className="d-flex flex-column  justify-content-center gradient-custom-2 h-100 mb-4">
+            <div
+              className={`d-flex flex-column  justify-content-center ${styles.gradientcustom2} h-100 mb-4`}
+            >
               <div className="text-white px-3 py-4 p-md-5 mx-md-4">
-                <h4 className="mb-4">We are more than just a company</h4>
                 <p className="small mb-0">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  AQUI PONDRE UN TEXTO RANDOM O ALGO QUE LLAME LA ATENCION, ALGO
+                  ASI COMO QUE EL MICHO ESTA MUY FEO Y QUE NO MERECIA AL PLOMO,
+                  BUENO POR ALGO EL PLOMO LE SACO LA VUELTA, EL ERA UN BUEN GATO
+                  Y SE LLEVABA BIEN CON ONCE, MERECIA UNA LARGA VIDA Y NO ESE
+                  MICHO COBARDE QUE ENCIMA GOLPEA A GATITOS BEBE INDEFENSOS
                 </p>
               </div>
             </div>
@@ -112,7 +116,7 @@ function Login() {
         </MDBRow>
         <Toaster />
       </MDBContainer>
-    </div>
+    </form>
   );
 }
 

@@ -9,6 +9,7 @@ function Chat() {
   const { register, handleSubmit, reset } = useForm();
 
   const room = localStorage.getItem("room");
+
   const [messages, setMessages] = useState([`hola desde ${room}`]);
   const { user } = useAuth();
 

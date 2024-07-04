@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../context/Authaxios";
 import Cookies from "js-cookie";
 
 // import dotenv from "dotenv";
@@ -26,12 +26,9 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (data) => {
     try {
-      const res = await axios.post(
-        `chatportfolios-production.up.railway.app/loginin`,
-        { withCredentials: true },
-        data
-      );
-      setUser(res.data);
+      const res = await axios.post(`loginin`, data);
+      console.log("front: token correcto");
+      setUser(data.nombre);
       setLoading(false);
       setIsAuthenticated(true);
     } catch (error) {
@@ -43,25 +40,45 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // const logout = () => {
-  //   Cookies.remove("token");
-  //   setUser(null);
-  //   setIsAuthenticated(false);
-  // };
-
-  const selectRoom = (roomName) => {
-    setRoom(roomName);
+  const logout = () => {
+    Cookies.remove("token");
+    console.log("front: se elimino el token");
+    setUser(null);
+    setIsAuthenticated(false);
   };
 
   useEffect(() => {
+    if (errors.length > 0) {
+      const timer = setTimeout(() => {
+        setErrors([]);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [errors]);
+
+  useEffect(() => {
+    const cookie = Cookies.get();
     async function checkLogin() {
-      const cookies = Cookies.get();
-      if (!cookies.token) {
+      if (cookie.token === undefined) {
+        console.log("front: No hay token");
         setIsAuthenticated(false);
         setLoading(false);
-        return setUser(null);
+        return;
       }
-      signup("verify", cookies.token);
+      try {
+        const res = await axios.post(`verify`, cookie.token);
+        console.log("front: verificando el token");
+        setUser(res.data);
+        setLoading(false);
+        setIsAuthenticated(true);
+      } catch (error) {
+        console.log("front: se verificó token incorrecto");
+        setIsAuthenticated(false);
+        setErrors([error.message]);
+        setUser(null);
+        setLoading(false);
+        console.log(error);
+      }
     }
     checkLogin();
   }, []);
@@ -74,8 +91,7 @@ export const AuthProvider = ({ children }) => {
         user,
         errors,
         loading,
-        // logout,
-        selectRoom,
+        logout,
         room,
       }}
     >

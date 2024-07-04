@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "chatportfolios-production.up.railway.app/loginin",
+  baseURL: "http://localhost:3000",
   withCredentials: true,
 });
 

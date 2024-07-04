@@ -2,17 +2,22 @@ import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import io from "socket.io-client";
 
+import { useAuth } from "../context/AuthContext";
+
 function Chat() {
-  const { register, handleSubmit, reset, watch } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  const room = localStorage.getItem("room");
+  const [messages, setMessages] = useState([`hola desde ${room}`]);
+  const { user } = useAuth();
 
   const messagesEndRef = useRef(null);
-  const room = localStorage.getItem("room");
-  const socket = io.connect("https://chatportfolio.onrender.com", {
+
+  const socket = io.connect("http://localhost:5000", {
     query: `room=${room}`,
   });
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -24,6 +29,10 @@ function Chat() {
   };
 
   useEffect(() => {
+    console.log(user.nombre);
+    setMessages([
+      "Recuerda que en esta web, esta prohibida la discriminación o su uso para incitar al odio o violencia, cualquier usuario que genere conflictos sera baneado permanentemente",
+    ]);
     const receiveMessage = (message) =>
       setMessages((state) => [...state, message]);
 
@@ -33,7 +42,7 @@ function Chat() {
     return () => {
       socket.off(`chat${room}`, receiveMessage);
     };
-  }, []);
+  }, [setMessages]);
 
   useEffect(scrollToBottom, [messages]);
 
@@ -41,7 +50,7 @@ function Chat() {
     <div translate="no" className="container">
       <div className="chat">
         <form onSubmit={handleSubmit(enviaralback)} className="cuadro-chat ">
-          <h1 className="titulo-chat ">PROYECTO CHAT</h1>
+          <h1 className="titulo-chat ">{`SALA: ${room} `}</h1>
 
           <ul className="mensajes">
             {messages.map((message, i) => (

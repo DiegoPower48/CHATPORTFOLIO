@@ -29,7 +29,7 @@ function Login() {
         error: <b>DATOS INCORRECTOS</b>,
       })
       .then(async () => {
-        console.log(roomselected);
+        console.log("sala: ", roomselected);
         reset();
         console.log("response");
       })

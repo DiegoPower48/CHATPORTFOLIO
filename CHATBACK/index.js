@@ -24,8 +24,6 @@ const app = express();
 const corsOptions = {
   origin: [
     "http://localhost:5173",
-    "https://chatportfolio.onrender.com",
-    "https://chatportfolio-hzom.vercel.app",
     "https://chatportfolio-production.up.railway.app",
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
@@ -39,8 +37,6 @@ const io = new Server(server, {
   cors: {
     origin: [
       "http://localhost:5173",
-      "https://chatportfolio.onrender.com",
-      "https://chatportfolio-hzom.vercel.app",
       "https://chatportfolio-production.up.railway.app",
     ],
     methods: ["GET", "POST"],

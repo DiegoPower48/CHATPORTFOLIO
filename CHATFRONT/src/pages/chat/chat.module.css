@@ -9,9 +9,14 @@
   display: flex;
   align-content: center;
   justify-content: center;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .container {
+  height: 93vh;
+  width: 50%;
   height: 93vh;
   width: 50%;
 }
@@ -40,6 +45,7 @@
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   word-wrap: break-word;
+  height: 590px;
   height: 590px;
   overflow-y: auto;
   margin-bottom: 40px;
@@ -73,6 +79,7 @@
   padding: 20px;
   color: black;
   position: sticky;
+  bottom: 0px;
   bottom: 0px;
 }
 

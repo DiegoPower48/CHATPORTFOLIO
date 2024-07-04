@@ -1,4 +1,6 @@
-.body {
+.barra {
   width: 100%;
-  height: 0px;
+  height: 6vh;
+  color: white;
+  background-color: #1b1b1d;
 }

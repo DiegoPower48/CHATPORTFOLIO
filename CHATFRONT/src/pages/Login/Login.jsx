@@ -1,12 +1,6 @@
 import React from "react";
 import styles from "./Login.module.css";
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBInput,
-} from "mdb-react-ui-kit";
+import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdb-react-ui-kit";
 
 import { useAuth } from "../../context/AuthContext";
 import { useEffect } from "react";
@@ -44,8 +38,8 @@ function Login() {
   }, [isAutenticated, navigate]);
 
   return (
-    <form>
-      <MDBContainer className={`"my - 5" ${styles.gradientform}`}>
+    <form className={styles.form}>
+      <MDBContainer className={`${styles.gradientform}`}>
         <MDBRow>
           <MDBCol col="6" className="mb-5">
             <div className="d-flex flex-column ms-5">
@@ -67,6 +61,7 @@ function Login() {
                 wrapperClass="mb-4"
                 label="Nombre de usuario"
                 autoComplete="usernane"
+                data-bs-theme="dark"
                 {...register("nombre", { required: true })}
               />
               <MDBInput
@@ -74,16 +69,18 @@ function Login() {
                 label="Contraseña"
                 type="password"
                 autoComplete="current-password"
+                data-bs-theme="dark"
                 {...register("contraseña", { required: true })}
               />
               <MDBInput
                 wrapperClass="mb-4"
                 label="Ingresa la sala a la que deseas conectarte"
                 placeholder="room?"
+                data-bs-theme="dark"
                 {...register("room", { required: true })}
               />
               <button
-                className="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                className={`btn btn-primary btn-block fa-lg ${styles.gradientcustom2} mb-3`}
                 type="submit"
                 onClick={handleSubmit(Datos)}
               >
@@ -91,7 +88,7 @@ function Login() {
               </button>
 
               <div className="text-center pt-1 mb-5 pb-1">
-                <a className="text-muted" href="#!">
+                <a className="text-muted" href="#!" data-bs-theme="dark">
                   Olvidaste tu clave 😊
                 </a>
               </div>

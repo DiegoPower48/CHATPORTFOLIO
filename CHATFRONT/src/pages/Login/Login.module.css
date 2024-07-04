@@ -1,18 +1,15 @@
-.body {
-  width: 100%;
-  height: 100vh;
-
-  box-sizing: border-box;
-  z-index: -1;
+.form {
+  background-color: #1b1b1d;
 }
 
 .gradientform {
-  padding: 100px;
+  color: white;
 }
 
 .gradientcustom2 {
   /* fallback for old browsers */
   background: #fccb90;
+  color: white;
 
   /* Chrome 10-25, Safari 5.1-6 */
   background: -webkit-linear-gradient(
@@ -29,7 +26,7 @@
 
 @media (min-width: 768px) {
   .gradientform {
-    height: 100vh !important;
+    height: 94vh !important;
   }
 }
 @media (min-width: 769px) {

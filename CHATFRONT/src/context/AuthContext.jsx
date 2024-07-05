@@ -23,14 +23,12 @@ export const AuthProvider = ({ children }) => {
   const [isAutenticated, setIsAuthenticated] = useState(false);
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [room, setRoom] = useState(localStorage.getItem("room"));
-
   const sendData = async (method, data) => {
     try {
       await axios.post(method, data);
       console.log("front: token correcto");
       setUser(data.nombre);
-      console.log(data.nombre);
+      console.log("hola", data.nombre);
       setLoading(false);
       setIsAuthenticated(true);
     } catch (error) {
@@ -61,6 +59,15 @@ export const AuthProvider = ({ children }) => {
   }, [errors]);
 
   useEffect(() => {
+    if (errors.length > 0) {
+      const timer = setTimeout(() => {
+        setErrors([]);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [errors]);
+
+  useEffect(() => {
     const cookie = Cookies.get();
     async function checkLogin() {
       if (cookie.token === undefined) {
@@ -80,11 +87,9 @@ export const AuthProvider = ({ children }) => {
       value={{
         isAutenticated,
         sendData,
-        user,
         errors,
         loading,
         logout,
-        room,
       }}
     >
       {children}

@@ -22,7 +22,7 @@ function Registrar() {
       .then((response) => {
         reset();
         localStorage.setItem("room", "Bienvenida");
-        localStorage.setItem("name", nombreNuevo);
+        localStorage.setItem("nombre", nombreNuevo);
         console.log(response);
       })
       .catch((error) => {

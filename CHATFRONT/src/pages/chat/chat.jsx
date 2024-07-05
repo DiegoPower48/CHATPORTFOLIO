@@ -9,8 +9,9 @@ function Chat() {
   const { register, handleSubmit, reset } = useForm();
   const { user } = useAuth();
   const room = localStorage.getItem("room");
+  const nombreLocal = localStorage.getItem("nombre");
   const [messages, setMessages] = useState([""]);
-  const nombreLocal = localStorage.getItem("name");
+
   //REFS
   const messagesEndRef = useRef(null);
 
@@ -24,8 +25,6 @@ function Chat() {
   };
 
   useEffect(() => {
-    console.log(user);
-
     setMessages([]);
     const receiveMessage = (message) =>
       setMessages((state) => [...state, message]);

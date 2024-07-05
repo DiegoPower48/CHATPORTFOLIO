@@ -18,7 +18,7 @@ function Login() {
 
   const Datos = async (data) => {
     localStorage.setItem("room", roomselected);
-    localStorage.setItem("name", nombre);
+    localStorage.setItem("nombre", nombre);
     sendData("loginin", data)
       .then(() => {
         console.log("sala: ", roomselected);

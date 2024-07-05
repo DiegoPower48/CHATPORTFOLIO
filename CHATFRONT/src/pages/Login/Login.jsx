@@ -1,4 +1,6 @@
 import React from "react";
+
+import Carousel from "react-bootstrap/Carousel";
 import styles from "./Login.module.css";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdb-react-ui-kit";
 
@@ -56,14 +58,14 @@ function Login() {
               <br />
 
               <br />
-
+              <label>Nombre de usuario</label>
               <MDBInput
                 wrapperClass="mb-4"
-                label="Nombre de usuario"
                 autoComplete="usernane"
                 data-bs-theme="dark"
                 {...register("nombre", { required: true })}
               />
+              <label>Contraseña</label>
               <MDBInput
                 wrapperClass="mb-4"
                 label="Contraseña"
@@ -72,13 +74,25 @@ function Login() {
                 data-bs-theme="dark"
                 {...register("contraseña", { required: true })}
               />
-              <MDBInput
-                wrapperClass="mb-4"
-                label="Ingresa la sala a la que deseas conectarte"
-                placeholder="room?"
+              <label>Ingresa la sala a la que deseas conectarte</label>
+
+              <select
                 data-bs-theme="dark"
                 {...register("room", { required: true })}
-              />
+                className={styles.menuroom}
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+
               <button
                 className={`btn btn-primary btn-block fa-lg ${styles.gradientcustom2} mb-3`}
                 type="submit"
@@ -114,6 +128,33 @@ function Login() {
         <Toaster />
       </MDBContainer>
     </form>
+  );
+}
+
+function Carrusel() {
+  return (
+    <Carousel>
+      <Carousel.Item interval={1000}>
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item interval={500}>
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
   );
 }
 

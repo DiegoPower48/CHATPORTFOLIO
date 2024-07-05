@@ -6,6 +6,17 @@
   color: white;
 }
 
+.mb-5 {
+  width: 30%;
+  float: right;
+}
+
+.menuroom {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 10px;
+}
 .gradientcustom2 {
   /* fallback for old browsers */
   background: #fccb90;

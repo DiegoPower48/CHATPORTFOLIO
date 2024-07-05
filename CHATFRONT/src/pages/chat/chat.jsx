@@ -7,7 +7,6 @@ import { useAuth } from "../../context/AuthContext";
 
 function Chat() {
   const { register, handleSubmit, reset } = useForm();
-  const { user } = useAuth();
   const room = localStorage.getItem("room");
   const nombreLocal = localStorage.getItem("nombre");
   const [messages, setMessages] = useState([""]);
@@ -62,18 +61,26 @@ function Chat() {
             <h1 className={styles.titulochat}>{`SALA: ${room} `}</h1>
 
             <ul className={styles.mensajes}>
-              <li>
+              <li className={styles.reglas}>
                 "Recuerda que en esta web, esta prohibida la discriminación o su
                 uso para incitar al odio o violencia, cualquier usuario que
                 genere conflictos sera baneado permanentemente",
               </li>
               {messages.map((message, i) => (
-                <li key={i}>
-                  <span>{message.nombre}</span>
-                  <br />
-                  <span className={styles.textoenviados}>
-                    {message.comentario}
+                <li
+                  key={i}
+                  className={[
+                    nombreLocal === message.nombre
+                      ? styles.textoenviadospropios
+                      : styles.textoenviadoajeno,
+                  ]}
+                >
+                  <span>
+                    {[nombreLocal === message.nombre ? "😀" : "🐷"]}
+                    {message.nombre}:
                   </span>
+                  <br />
+                  <span>{message.comentario}</span>
                 </li>
               ))}
               <div ref={messagesEndRef} />

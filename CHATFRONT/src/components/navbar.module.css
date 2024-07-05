@@ -3,4 +3,20 @@
   height: 6vh;
   color: white;
   background-color: #1b1b1d;
+  display: flex;
+  justify-content: center;
+}
+
+.linked {
+  padding: 15px;
+  padding-left: 100px;
+  padding-right: 100px;
+  width: 100%;
+  margin: -1px;
+}
+
+.links {
+  padding: 0px;
+  margin: 0;
+  width: 100%;
 }

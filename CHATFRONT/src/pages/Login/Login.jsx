@@ -33,7 +33,7 @@ function Login() {
 
   useEffect(() => {
     if (isAutenticated) {
-      navigate("/");
+      navigate("/chat");
     }
   }, [isAutenticated, navigate]);
 
@@ -80,7 +80,6 @@ function Login() {
                 {...register("room", { required: true })}
               />
               <button
-                className={`btn btn-primary btn-block fa-lg ${styles.gradientcustom2} mb-3`}
                 className={`btn btn-primary btn-block fa-lg ${styles.gradientcustom2} mb-3`}
                 type="submit"
                 onClick={handleSubmit(Datos)}

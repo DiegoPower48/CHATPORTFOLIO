@@ -29,7 +29,7 @@ function Registrar() {
 
   useEffect(() => {
     if (isAutenticated) {
-      navigate("/login");
+      navigate("/");
     }
   }, [isAutenticated]);
 

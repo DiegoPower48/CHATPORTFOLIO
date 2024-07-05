@@ -7,15 +7,14 @@ import { useAuth } from "../../context/AuthContext";
 
 function Chat() {
   const { register, handleSubmit, reset } = useForm();
-
-  const room = localStorage.getItem("room");
-  const usernombre = localStorage.getItem("name");
-
-  const [messages, setMessages] = useState([""]);
   const { user } = useAuth();
+  const room = localStorage.getItem("room");
+  const [messages, setMessages] = useState([""]);
 
+  //REFS
   const messagesEndRef = useRef(null);
 
+  // SOCKETS Y FUNCIONES
   const socket = io.connect("http://localhost:5000", {
     query: `room=${room}`,
   });
@@ -24,27 +23,34 @@ function Chat() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // useEffect(() => {
+  //   console.log(user);
+
+  //   setMessages([]);
+  //   const receiveMessage = (message) =>
+  //     setMessages((state) => [...state, message]);
+
+  //   console.log("emitinedo");
+  //   socket.on(`chat${room}`, receiveMessage);
+
+  //   return () => {
+  //     socket.off(`chat${room}`, receiveMessage);
+  //   };
+  // }, []);
+
+  useEffect(scrollToBottom, [messages]);
+
   const enviaralback = (mensaje) => {
-    socket.emit(`chat${room}`, mensaje.comentario);
+    const textoEnviado = {
+      nombre: user.nombre,
+      comentario: mensaje.comentario,
+    };
+    console.log(textoEnviado);
+
+    socket.emit(`chat${room}`, textoEnviado);
 
     reset();
   };
-
-  useEffect(() => {
-    console.log(user.nombre);
-    setMessages([]);
-    const receiveMessage = (message) =>
-      setMessages((state) => [...state, message]);
-
-    console.log("emitinedo");
-    socket.on(`chat${room}`, receiveMessage);
-
-    return () => {
-      socket.off(`chat${room}`, receiveMessage);
-    };
-  }, [setMessages]);
-
-  useEffect(scrollToBottom, [messages]);
 
   return (
     <div className={styles.body}>
@@ -64,7 +70,7 @@ function Chat() {
               </li>
               {messages.map((message, i) => (
                 <li key={i}>
-                  <span>{usernombre}:</span>
+                  <span>nombre de usuario</span>
                   <br />
                   <span className={styles.textoenviados}>{message}</span>
                 </li>

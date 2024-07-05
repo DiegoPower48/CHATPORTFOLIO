@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../context/Authaxios";
+
 import Cookies from "js-cookie";
 
 // import dotenv from "dotenv";
@@ -26,9 +27,10 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (data) => {
     try {
-      const res = await axios.post(`loginin`, data);
+      await axios.post(`loginin`, data);
       console.log("front: token correcto");
       setUser(data.nombre);
+      console.log(data.nombre);
       setLoading(false);
       setIsAuthenticated(true);
     } catch (error) {

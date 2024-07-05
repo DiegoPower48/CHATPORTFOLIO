@@ -1,0 +1,11 @@
+.loading {
+  border: 0;
+  margin: 0;
+  height: 94vh;
+  width: 100%;
+  background-color: #121212;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}

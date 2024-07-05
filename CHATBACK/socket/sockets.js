@@ -12,7 +12,7 @@ const socket = (io) => {
     console.log("un usuario se ha conectado");
 
     const schemaName = `Item${room}`;
-    const collectionName = `CHAT${room}`;
+    const collectionName = `ROOM: ${room}`;
 
     // Verificar si el modelo ya existe
     const Item =

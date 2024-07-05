@@ -10,7 +10,7 @@ function Chat() {
   const { user } = useAuth();
   const room = localStorage.getItem("room");
   const [messages, setMessages] = useState([""]);
-
+  const nombreLocal = localStorage.getItem("name");
   //REFS
   const messagesEndRef = useRef(null);
 
@@ -23,26 +23,26 @@ function Chat() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // useEffect(() => {
-  //   console.log(user);
+  useEffect(() => {
+    console.log(user);
 
-  //   setMessages([]);
-  //   const receiveMessage = (message) =>
-  //     setMessages((state) => [...state, message]);
+    setMessages([]);
+    const receiveMessage = (message) =>
+      setMessages((state) => [...state, message]);
 
-  //   console.log("emitinedo");
-  //   socket.on(`chat${room}`, receiveMessage);
+    console.log("emitinedo");
+    socket.on(`chat${room}`, receiveMessage);
 
-  //   return () => {
-  //     socket.off(`chat${room}`, receiveMessage);
-  //   };
-  // }, []);
+    return () => {
+      socket.off(`chat${room}`, receiveMessage);
+    };
+  }, []);
 
   useEffect(scrollToBottom, [messages]);
 
   const enviaralback = (mensaje) => {
     const textoEnviado = {
-      nombre: user.nombre,
+      nombre: nombreLocal,
       comentario: mensaje.comentario,
     };
     console.log(textoEnviado);
@@ -70,9 +70,11 @@ function Chat() {
               </li>
               {messages.map((message, i) => (
                 <li key={i}>
-                  <span>nombre de usuario</span>
+                  <span>{message.nombre}</span>
                   <br />
-                  <span className={styles.textoenviados}>{message}</span>
+                  <span className={styles.textoenviados}>
+                    {message.comentario}
+                  </span>
                 </li>
               ))}
               <div ref={messagesEndRef} />

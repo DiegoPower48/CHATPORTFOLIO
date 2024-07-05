@@ -10,7 +10,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 function Login() {
   const { register, reset, handleSubmit, watch } = useForm();
-  const { signup, isAutenticated, errors: RegisterErrors } = useAuth();
+  const { sendData, isAutenticated, errors: RegisterErrors } = useAuth();
   const navigate = useNavigate();
 
   const roomselected = watch("room");
@@ -19,7 +19,7 @@ function Login() {
   const Datos = async (data) => {
     localStorage.setItem("room", roomselected);
     localStorage.setItem("name", nombre);
-    signup(data)
+    sendData("loginin", data)
       .then(() => {
         console.log("sala: ", roomselected);
 

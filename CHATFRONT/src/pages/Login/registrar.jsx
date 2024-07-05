@@ -7,19 +7,22 @@ import { useNavigate } from "react-router-dom";
 function Registrar() {
   const { register, reset, handleSubmit, watch } = useForm();
 
-  const { signup, isAutenticated, errors: RegisterErrors } = useAuth();
+  const { sendData, isAutenticated, errors: RegisterErrors } = useAuth();
   const informacionFormulario = watch();
+  const nombreNuevo = watch("nombre");
   const navigate = useNavigate();
 
   const Datos = () => {
     toast
-      .promise(signup("registro", informacionFormulario), {
+      .promise(sendData("registro", informacionFormulario), {
         loading: "⏳⏳  REGISTRANDO DATOS......",
         success: <b>"REGISTRO EXITOSO!!!!🚀"</b>,
         error: <b>NO SE PUDO GUARDAR</b>,
       })
       .then((response) => {
         reset();
+        localStorage.setItem("room", "Bienvenida");
+        localStorage.setItem("name", nombreNuevo);
         console.log(response);
       })
       .catch((error) => {

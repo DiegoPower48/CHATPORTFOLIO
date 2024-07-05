@@ -21,6 +21,7 @@ const socket = (io) => {
         schemaName,
         new mongoose.Schema(
           {
+            nombre: { type: String },
             comentario: { type: String },
           },
           { collection: collectionName }
@@ -31,11 +32,15 @@ const socket = (io) => {
       console.log("un usuario se ha desconectado");
     });
     socket.on(`chat${room}`, async (msg) => {
+      console.log(msg);
       try {
         await Item.create({
-          comentario: msg,
+          nombre: msg.nombre,
+          comentario: msg.comentario,
         });
-        console.log(`guardando el mensaje "${msg}"`);
+        console.log(
+          `guardando el mensaje de: "${msg.nombre}" el cual es:"${msg.comentario}"`
+        );
       } catch (e) {
         console.log("error en create");
       }
@@ -45,7 +50,8 @@ const socket = (io) => {
       try {
         Item.find({}).then((recuperado) => {
           recuperado.map((message) => {
-            socket.emit(`chat${room}`, message.comentario);
+            console.log(message);
+            socket.emit(`chat${room}`, message);
           });
         });
       } catch (e) {

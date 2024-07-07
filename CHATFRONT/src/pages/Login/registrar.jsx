@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -18,24 +17,21 @@ function Registrar() {
   } = useForm();
 
   const { sendData, isAutenticated, errors: RegisterErrors } = useAuth();
+
   const informacionFormulario = watch();
   const nombreNuevo = watch("nombre");
 
   const navigate = useNavigate();
 
   const Datos = async () => {
-    try {
-      const res = await sendData.post("registro", informacionFormulario);
-
-      if (res) {
-        reset();
+    await sendData("registro", informacionFormulario, nombreNuevo)
+      .then(() => {
         localStorage.setItem("room", "Bienvenida");
         localStorage.setItem("nombre", nombreNuevo);
-        console.log(response);
-      }
-    } catch (error) {
-      console.log("front: usuario o correo ya existente");
-    }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -134,7 +130,6 @@ function Registrar() {
               </div>
             </MDBCol>
           </MDBRow>
-          <Toaster />
         </MDBContainer>
       </form>
 
@@ -169,7 +164,6 @@ function Registrar() {
           boton
         </button>
       </form> */}
-      <Toaster />
     </>
   );
 }

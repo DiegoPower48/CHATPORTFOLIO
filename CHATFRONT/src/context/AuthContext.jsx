@@ -26,20 +26,20 @@ export const AuthProvider = ({ children }) => {
 
   const sendData = async (method, data) => {
     try {
-      await axios.post(method, data);
-      console.log("front: datos correctos");
-      setUser(data.nombre);
-      setLoading(false);
-      setIsAuthenticated(true);
+      const res = await axios.post(method, data);
+      if (res.status === 200) {
+        console.log(res.status);
+        setUser(data.nombre);
+        setLoading(false);
+        setIsAuthenticated(true);
+        console.log("contexto exitoso ");
+      }
     } catch (error) {
-      setIsAuthenticated(false);
-      setErrors([error.message]);
+      setErrors([error.response.data]);
       setUser(null);
       setLoading(false);
-      console.log(error);
     }
   };
-
   const logout = () => {
     Cookies.remove("token");
     localStorage.removeItem("name");
@@ -48,15 +48,6 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
     setIsAuthenticated(false);
   };
-
-  useEffect(() => {
-    if (errors.length > 0) {
-      const timer = setTimeout(() => {
-        setErrors([]);
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [errors]);
 
   useEffect(() => {
     if (errors.length > 0) {
@@ -85,15 +76,11 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
-        setIsAuthenticated,
         isAutenticated,
         sendData,
         errors,
         loading,
         logout,
-        setErrors,
-        setUser,
-        setLoading,
       }}
     >
       {children}

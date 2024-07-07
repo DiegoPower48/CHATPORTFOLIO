@@ -25,12 +25,11 @@ function Login() {
   const nombre = watch("nombre");
 
   const Datos = async (data) => {
-    localStorage.setItem("room", roomselected);
-    localStorage.setItem("nombre", nombre);
     sendData("loginin", data)
       .then(() => {
         console.log("sala: ", roomselected);
-
+        localStorage.setItem("room", roomselected);
+        localStorage.setItem("nombre", nombre);
         reset();
         console.log("response");
       })

@@ -24,22 +24,46 @@ export const AuthProvider = ({ children }) => {
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const sendData = async (method, data) => {
+  const Registrar = async (data, nombre) => {
     try {
-      const res = await axios.post(method, data);
+      const res = await axios.post("registro", data);
       if (res.status === 200) {
         console.log(res.status);
         setUser(data.nombre);
         setLoading(false);
         setIsAuthenticated(true);
         console.log("contexto exitoso ");
+        localStorage.setItem("room", "Bienvenida");
+        localStorage.setItem("nombre", nombre);
       }
     } catch (error) {
       setErrors([error.response.data]);
       setUser(null);
       setLoading(false);
+      console.log(error.response.data);
     }
   };
+
+  const Login = async (data, room, nombre) => {
+    try {
+      const res = await axios.post("loginin", data);
+      if (res.status === 200) {
+        console.log(res.status);
+        localStorage.setItem("room", room);
+        localStorage.setItem("nombre", nombre);
+        console.log("response");
+        setUser(data.nombre);
+        setLoading(false);
+        setIsAuthenticated(true);
+      }
+    } catch (error) {
+      setErrors([error.response.data]);
+      setUser(null);
+      setLoading(false);
+      console.log(error.response.data);
+    }
+  };
+
   const logout = () => {
     Cookies.remove("token");
     localStorage.removeItem("name");
@@ -76,8 +100,9 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        Registrar,
+        Login,
         isAutenticated,
-        sendData,
         errors,
         loading,
         logout,

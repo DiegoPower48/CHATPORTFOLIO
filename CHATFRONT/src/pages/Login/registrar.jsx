@@ -16,7 +16,7 @@ function Registrar() {
     formState: { errors },
   } = useForm();
 
-  const { sendData, isAutenticated, errors: RegisterErrors } = useAuth();
+  const { isAutenticated, errors: RegisterErrors, Registrar } = useAuth();
 
   const informacionFormulario = watch();
   const nombreNuevo = watch("nombre");
@@ -24,14 +24,11 @@ function Registrar() {
   const navigate = useNavigate();
 
   const Datos = async () => {
-    await sendData("registro", informacionFormulario, nombreNuevo)
-      .then(() => {
-        localStorage.setItem("room", "Bienvenida");
-        localStorage.setItem("nombre", nombreNuevo);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      await Registrar(informacionFormulario, nombreNuevo);
+    } catch (error) {
+      console.log("hola registro");
+    }
   };
 
   useEffect(() => {

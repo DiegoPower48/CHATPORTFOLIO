@@ -18,24 +18,15 @@ function Login() {
     watch,
     formState: { errors },
   } = useForm();
-  const { sendData, isAutenticated, errors: RegisterErrors } = useAuth();
+  const { isAutenticated, errors: RegisterErrors, Login } = useAuth();
   const navigate = useNavigate();
 
   const roomselected = watch("room");
   const nombre = watch("nombre");
+  const datos = watch();
 
-  const Datos = async (data) => {
-    sendData("loginin", data)
-      .then(() => {
-        console.log("sala: ", roomselected);
-        localStorage.setItem("room", roomselected);
-        localStorage.setItem("nombre", nombre);
-        reset();
-        console.log("response");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const Datos = async () => {
+    await Login(datos, roomselected, nombre);
   };
 
   useEffect(() => {

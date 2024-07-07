@@ -11,7 +11,13 @@ import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
 function Login() {
-  const { register, reset, handleSubmit, watch } = useForm();
+  const {
+    register,
+    reset,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const { sendData, isAutenticated, errors: RegisterErrors } = useAuth();
   const navigate = useNavigate();
 
@@ -42,22 +48,29 @@ function Login() {
   return (
     <form className={styles.form}>
       <MDBContainer className={`${styles.gradientform}`}>
-        <MDBRow>
-          <MDBCol col="6" className="mb-5">
+        <MDBRow className="styles.cuadro">
+          <MDBCol className="">
             <div className="d-flex flex-column ms-5">
               <div className="text-center">
+                <br />
                 <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                  style={{ width: "185px" }}
+                  src="https://th.bing.com/th/id/R.f81a6f373c244b1f70f4b7402b5ab372?rik=rbXh4ieLuKt%2bmA&riu=http%3a%2f%2flogos-download.com%2fwp-content%2fuploads%2f2016%2f09%2fReact_logo_logotype_emblem.png&ehk=QhGOkKcUKCU7FBQgHOajOiJqJBACUTD2Ni6LsfqzCEA%3d&risl=&pid=ImgRaw&r=0"
+                  style={{
+                    height: "80px",
+                    margin: "20px",
+                    paddingLeft: "140px",
+                  }}
                   alt="logo"
                 />
                 <h1 className="mt-1 mb-5 pb-1">BIENVENIDO A MI CHAT 🎉🎉🎉</h1>
+                <h1 className="mt-1 mb-5 pb-1">DAYSI TE AMO ❤❤❤</h1>
               </div>
 
-              <p>PORFAVOR INGRESA TUS DATOS</p>
-              <br />
+              <p>PORFAVOR INGRESA TUS DATOS:</p>
 
-              <br />
+              {RegisterErrors.map((error, i) => (
+                <div key={i}>{error}</div>
+              ))}
               <label>Nombre de usuario</label>
               <MDBInput
                 wrapperClass="mb-4"
@@ -68,13 +81,12 @@ function Login() {
               <label>Contraseña</label>
               <MDBInput
                 wrapperClass="mb-4"
-                label="Contraseña"
                 type="password"
                 autoComplete="current-password"
                 data-bs-theme="dark"
                 {...register("contraseña", { required: true })}
               />
-              <label>Ingresa la sala a la que deseas conectarte</label>
+              <label>Ingresa la sala a la que deseas conectarte:</label>
 
               <select
                 data-bs-theme="dark"
@@ -109,7 +121,7 @@ function Login() {
             </div>
           </MDBCol>
 
-          <MDBCol col="6" className="mb-5">
+          <MDBCol className="">
             <div
               className={`d-flex flex-column  justify-content-center ${styles.gradientcustom2} h-100 mb-4`}
             >

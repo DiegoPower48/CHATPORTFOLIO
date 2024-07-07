@@ -21,7 +21,7 @@ function ProtectedRoutes() {
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
-        <Navigate to="/chat" replace />;
+        <Navigate to="/" replace />;
       </div>
     );
   }

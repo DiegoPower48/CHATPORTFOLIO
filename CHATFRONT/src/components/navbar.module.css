@@ -4,19 +4,26 @@
   color: white;
   background-color: #1b1b1d;
   display: flex;
+  align-content: center;
   justify-content: center;
+}
+
+.login {
+  margin-left: 46px;
 }
 
 .linked {
   padding: 15px;
   padding-left: 100px;
   padding-right: 100px;
+  background-color: black;
   width: 100%;
-  margin: -1px;
+  text-align: center;
+  border-radius: 20px 20px 0 0;
 }
 
-.links {
-  padding: 0px;
-  margin: 0;
-  width: 100%;
+.linkedoff {
+  padding-top: 15px;
+  padding-left: 100px;
+  padding-right: 100px;
 }

@@ -4,6 +4,7 @@ import styles from "./navbar.module.css";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import { Navbar } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 
 function userheader() {
   const { isAutenticated, logout } = useAuth();
@@ -11,7 +12,9 @@ function userheader() {
   const handleLogout = () => {
     logout();
   };
-
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+  const isregistrar = location.pathname === "/registrar";
   return (
     <ul>
       {isAutenticated ? (
@@ -22,8 +25,8 @@ function userheader() {
           >
             <Container>
               <Navbar.Brand onClick={handleLogout}>
-                <Link className={styles.linked} to="/">
-                  LOGOUT
+                <Link className={`${styles.login} ${styles.linkedoff}`} to="/">
+                  <p> LOGOUT</p>
                 </Link>
               </Navbar.Brand>
               <Navbar.Toggle />
@@ -42,18 +45,22 @@ function userheader() {
             data-bs-theme="dark"
           >
             <Nav.Item>
-              <Nav.Link eventKey="link-2" className={styles.links}>
-                <Link className={styles.linked} to="/">
-                  Login
-                </Link>
-              </Nav.Link>
+              <Link
+                className={`${styles.login} ${
+                  isHome ? styles.linked : styles.linkedoff
+                }`}
+                to="/"
+              >
+                Login
+              </Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="link-1">
-                <Link className={styles.linked} to="/registrar">
-                  Registrar
-                </Link>
-              </Nav.Link>
+              <Link
+                className={isregistrar ? styles.linked : styles.linkedoff}
+                to="/registrar"
+              >
+                Registrar
+              </Link>
             </Nav.Item>
           </Nav>
         </>

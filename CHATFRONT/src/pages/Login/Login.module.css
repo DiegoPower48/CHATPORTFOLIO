@@ -1,14 +1,25 @@
 .form {
   background-color: #1b1b1d;
+  height: 94vh;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .gradientform {
   color: white;
+  box-sizing: border-box;
+  height: 100%;
 }
 
 .mb-5 {
   width: 30%;
   float: right;
+}
+
+.cuadro {
+  margin: 0;
+  height: 100%;
 }
 
 .menuroom {
@@ -19,8 +30,10 @@
 }
 .gradientcustom2 {
   /* fallback for old browsers */
+  box-sizing: border-box;
   background: #fccb90;
   color: white;
+  height: 100%;
 
   /* Chrome 10-25, Safari 5.1-6 */
   background: -webkit-linear-gradient(
@@ -37,10 +50,10 @@
 
 @media (min-width: 768px) {
   .gradientform {
-    height: 94vh !important;
+    height: 100% !important;
   }
 }
-@media (min-width: 769px) {
+@media (min-width: 169px) {
   .gradientcustom2 {
     border-top-right-radius: 0.3rem;
     border-bottom-right-radius: 0.3rem;

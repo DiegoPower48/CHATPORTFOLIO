@@ -23,12 +23,12 @@ export const AuthProvider = ({ children }) => {
   const [isAutenticated, setIsAuthenticated] = useState(false);
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const sendData = async (method, data) => {
     try {
       await axios.post(method, data);
-      console.log("front: token correcto");
+      console.log("front: datos correctos");
       setUser(data.nombre);
-      console.log("hola", data.nombre);
       setLoading(false);
       setIsAuthenticated(true);
     } catch (error) {
@@ -85,11 +85,15 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        setIsAuthenticated,
         isAutenticated,
         sendData,
         errors,
         loading,
         logout,
+        setErrors,
+        setUser,
+        setLoading,
       }}
     >
       {children}

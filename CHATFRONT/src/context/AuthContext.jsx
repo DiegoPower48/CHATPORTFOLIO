@@ -64,6 +64,23 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const verificar = async (token) => {
+    try {
+      const res = await axios.post("verify", token);
+      if (res.status === 200) {
+        setUser(data.nombre);
+        setLoading(false);
+        setIsAuthenticated(true);
+      }
+    } catch (error) {
+      setErrors([error.response.data]);
+      setUser(null);
+      setLoading(false);
+      setIsAuthenticated(false);
+      console.log(error.response.data);
+    }
+  };
+
   const logout = () => {
     Cookies.remove("token");
     localStorage.removeItem("name");
@@ -92,7 +109,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(false);
         return;
       }
-      sendData(`verify`, cookie.token);
+      verificar(cookie.token);
     }
     checkLogin();
   }, []);

@@ -19,6 +19,7 @@ function Login() {
     formState: { errors },
   } = useForm();
   const { isAutenticated, errors: RegisterErrors, Login } = useAuth();
+
   const navigate = useNavigate();
 
   const roomselected = watch("room");
@@ -28,6 +29,18 @@ function Login() {
   const Datos = async () => {
     await Login(datos, roomselected, nombre);
   };
+
+  useEffect(() => {
+    if (RegisterErrors != "") {
+      toast.error(RegisterErrors, {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
+    }
+  }, [RegisterErrors]);
 
   useEffect(() => {
     if (isAutenticated) {
@@ -58,9 +71,6 @@ function Login() {
 
               <p>PORFAVOR INGRESA TUS DATOS:</p>
 
-              {RegisterErrors.map((error, i) => (
-                <div key={i}>{error}</div>
-              ))}
               <label>Nombre de usuario</label>
               <MDBInput
                 wrapperClass="mb-4"
@@ -127,7 +137,11 @@ function Login() {
             </div>
           </MDBCol>
         </MDBRow>
-        <Toaster />
+        <Toaster
+          containerStyle={{
+            top: 53,
+          }}
+        />
       </MDBContainer>
     </form>
   );

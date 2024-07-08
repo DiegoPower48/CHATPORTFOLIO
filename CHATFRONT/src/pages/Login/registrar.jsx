@@ -3,6 +3,8 @@ import { useAuth } from "../../context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+import toast, { Toaster } from "react-hot-toast";
+
 import Carousel from "react-bootstrap/Carousel";
 import styles from "./Login.module.css";
 import { MDBContainer, MDBRow, MDBCol, MDBInput } from "mdb-react-ui-kit";
@@ -30,6 +32,18 @@ function Registrar() {
       console.log("hola registro");
     }
   };
+
+  useEffect(() => {
+    if (RegisterErrors != "") {
+      toast.error(RegisterErrors, {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
+    }
+  }, [RegisterErrors]);
 
   useEffect(() => {
     if (isAutenticated) {
@@ -64,13 +78,9 @@ function Registrar() {
                 </div>
 
                 <p>PORFAVOR INGRESA TUS DATOS:</p>
-                <br />
 
-                {RegisterErrors.map((error, i) => (
-                  <div key={i}>{error}</div>
-                ))}
                 <label>Nombre de usuario</label>
-                {errors.nombre && <p>Nombre es requerido</p>}
+
                 <MDBInput
                   wrapperClass="mb-4"
                   data-bs-theme="dark"
@@ -161,6 +171,11 @@ function Registrar() {
           boton
         </button>
       </form> */}
+      <Toaster
+        containerStyle={{
+          top: 53,
+        }}
+      />
     </>
   );
 }

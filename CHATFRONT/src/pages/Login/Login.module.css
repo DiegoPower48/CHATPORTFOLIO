@@ -17,6 +17,15 @@
   float: right;
 }
 
+.errors {
+  background-color: red;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 2px;
+}
+
 .cuadro {
   margin: 0;
   height: 100%;

@@ -3,7 +3,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import toast, { Toaster } from "react-hot-toast";
+// import toast, { Toaster } from "react-hot-toast";
 
 import Carousel from "react-bootstrap/Carousel";
 import styles from "./Login.module.css";
@@ -18,32 +18,36 @@ function Registrar() {
     formState: { errors },
   } = useForm();
 
-  const { isAutenticated, errors: RegisterErrors, Registrar } = useAuth();
+  const {
+    isAutenticated,
+    errors: RegisterErrors,
+    Registrar,
+    setErrors,
+  } = useAuth();
 
   const informacionFormulario = watch();
-  const nombreNuevo = watch("nombre");
 
   const navigate = useNavigate();
 
   const Datos = async () => {
     try {
-      await Registrar(informacionFormulario, nombreNuevo);
+      await Registrar(informacionFormulario);
     } catch (error) {
-      console.log("hola registro");
+      console.log(error);
     }
   };
 
-  useEffect(() => {
-    if (RegisterErrors != "") {
-      toast.error(RegisterErrors, {
-        style: {
-          borderRadius: "10px",
-          background: "#333",
-          color: "#fff",
-        },
-      });
-    }
-  }, [RegisterErrors]);
+  // useEffect(() => {
+  //   if (RegisterErrors != "") {
+  //     toast.error(RegisterErrors, {
+  //       style: {
+  //         borderRadius: "10px",
+  //         background: "#333",
+  //         color: "#fff",
+  //       },
+  //     });
+  //   }
+  // }, [RegisterErrors]);
 
   useEffect(() => {
     if (isAutenticated) {
@@ -171,11 +175,11 @@ function Registrar() {
           boton
         </button>
       </form> */}
-      <Toaster
+      {/* <Toaster
         containerStyle={{
           top: 53,
         }}
-      />
+      /> */}
     </>
   );
 }

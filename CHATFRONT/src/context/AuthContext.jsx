@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../context/Authaxios";
 
+import toast, { Toaster } from "react-hot-toast";
 import Cookies from "js-cookie";
 
 // import dotenv from "dotenv";
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }) => {
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const Registrar = async (data, nombre) => {
+  const Registrar = async (data) => {
     try {
       const res = await axios.post("registro", data);
       if (res.status === 200) {
@@ -34,33 +35,35 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
         console.log("contexto exitoso ");
         localStorage.setItem("room", "Bienvenida");
-        localStorage.setItem("nombre", nombre);
+        localStorage.setItem("nombre", data.nombre);
       }
     } catch (error) {
       setErrors([error.response.data]);
       setUser(null);
       setLoading(false);
       console.log(error.response.data);
+      toast.error(error.response.data);
     }
   };
 
-  const Login = async (data, room, nombre) => {
+  const Login = async (data, room) => {
     try {
       const res = await axios.post("loginin", data);
       if (res.status === 200) {
         console.log(res.status);
-        localStorage.setItem("room", room);
-        localStorage.setItem("nombre", nombre);
         console.log("response");
         setUser(data.nombre);
         setLoading(false);
         setIsAuthenticated(true);
+        localStorage.setItem("room", room);
+        localStorage.setItem("nombre", data.nombre);
       }
     } catch (error) {
       setErrors([error.response.data]);
       setUser(null);
       setLoading(false);
       console.log(error.response.data);
+      toast.error(error.response.data);
     }
   };
 
@@ -83,7 +86,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     Cookies.remove("token");
-    localStorage.removeItem("name");
+    localStorage.removeItem("nombre");
     localStorage.removeItem("room");
     console.log("front: se elimino el token");
     setUser(null);
@@ -123,9 +126,15 @@ export const AuthProvider = ({ children }) => {
         errors,
         loading,
         logout,
+        setErrors,
       }}
     >
-      {children}
+      {children}{" "}
+      <Toaster
+        containerStyle={{
+          top: 53,
+        }}
+      />
     </AuthContext.Provider>
   );
 };

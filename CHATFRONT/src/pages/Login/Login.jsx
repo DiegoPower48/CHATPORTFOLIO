@@ -8,7 +8,6 @@ import { useAuth } from "../../context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
 
 function Login() {
   const {
@@ -18,29 +17,21 @@ function Login() {
     watch,
     formState: { errors },
   } = useForm();
-  const { isAutenticated, errors: RegisterErrors, Login } = useAuth();
+  const {
+    isAutenticated,
+    errors: RegisterErrors,
+    Login,
+    setErrors,
+  } = useAuth();
 
   const navigate = useNavigate();
 
   const roomselected = watch("room");
-  const nombre = watch("nombre");
   const datos = watch();
 
   const Datos = async () => {
-    await Login(datos, roomselected, nombre);
+    await Login(datos, roomselected);
   };
-
-  useEffect(() => {
-    if (RegisterErrors != "") {
-      toast.error(RegisterErrors, {
-        style: {
-          borderRadius: "10px",
-          background: "#333",
-          color: "#fff",
-        },
-      });
-    }
-  }, [RegisterErrors]);
 
   useEffect(() => {
     if (isAutenticated) {
@@ -137,11 +128,6 @@ function Login() {
             </div>
           </MDBCol>
         </MDBRow>
-        <Toaster
-          containerStyle={{
-            top: 53,
-          }}
-        />
       </MDBContainer>
     </form>
   );

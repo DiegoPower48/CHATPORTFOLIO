@@ -4,7 +4,6 @@ import Login from "./pages/Login/Login";
 import Registrar from "./pages/Login/registrar";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoutes from "./pages/protected/protected";
-import Userheader from "./components/navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -12,7 +11,6 @@ function App() {
     <>
       <AuthProvider>
         <BrowserRouter>
-          <Userheader />
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="*" element={<Login />} />

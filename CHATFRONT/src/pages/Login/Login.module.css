@@ -1,70 +1,128 @@
-.form {
-  background-color: #1b1b1d;
-  height: 94vh;
-  box-sizing: border-box;
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-.gradientform {
+.barra {
+  width: 100%;
+  height: 6vh;
+  font-size: 20px;
   color: white;
-  box-sizing: border-box;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.cuadros {
+  width: 100%;
   height: 100%;
-}
-
-.mb-5 {
-  width: 30%;
-  float: right;
-}
-
-.errors {
-  background-color: red;
+  background-color: #1b1b1d;
   display: flex;
   align-content: center;
   justify-content: center;
-  border-radius: 10px;
-  padding: 2px;
 }
 
-.cuadro {
-  margin: 0;
+.links {
   height: 100%;
+  width: 25%;
+  float: left;
+  border-radius: 20px 20px 0 0;
+  text-align: center;
+  background-color: red;
+  padding-top: 5px;
+}
+.registro {
+  float: right;
+  height: 100%;
+  width: 25%;
+  border-radius: 20px 20px 0 0;
+  text-align: center;
+  background-color: blue;
+  padding-top: 5px;
 }
 
-.menuroom {
-  margin-top: 15px;
-  margin-bottom: 15px;
+.linked {
+  background-color: black;
+  width: 30%;
+}
+
+.container {
+  background-color: #1b1b1d;
+  height: 94vh;
+  width: 100%;
+  display: block;
+  color: white;
+  font-size: 20px;
+}
+
+.form {
+  padding-left: 150px;
+  width: 50%;
+  display: block;
+  float: left;
+}
+
+.datos {
+  width: 100%;
+  margin: 15px;
   padding: 15px;
   border-radius: 10px;
 }
-.gradientcustom2 {
-  /* fallback for old browsers */
-  box-sizing: border-box;
-  background: #fccb90;
-  color: white;
-  height: 100%;
 
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(
-    to right,
-    #ee7724,
-    #d8363a,
-    #dd3675,
-    #b44593
-  );
-
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+.boton {
+  width: 100%;
+  border-radius: 20px;
+  display: block;
+  height: 50px;
+  margin-bottom: 20px;
+  background-color: orange;
 }
 
-@media (min-width: 768px) {
-  .gradientform {
-    height: 100% !important;
+.carrusel {
+  width: 50%;
+  background-color: red;
+  height: 100%;
+  float: right;
+  margin: 0;
+  padding: 0;
+  color: blue;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.paginas {
+  background-color: black;
+  width: 30%;
+  height: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.textos {
+  display: block;
+  width: 30%;
+  height: 100%;
+  background-color: green;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 1280px) {
+  .links,
+  .registro {
+    width: 40%;
   }
 }
-@media (min-width: 169px) {
-  .gradientcustom2 {
-    border-top-right-radius: 0.3rem;
-    border-bottom-right-radius: 0.3rem;
+
+@media (max-width: 559px) {
+  .boton {
+    display: inline;
+    margin-left: 0;
+  }
+  .menuroom,
+  .datos {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0;
+  }
+  .links,
+  .registro {
+    width: 50%;
+    border-radius: 0;
   }
 }

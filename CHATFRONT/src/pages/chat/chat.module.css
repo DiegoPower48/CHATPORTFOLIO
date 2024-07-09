@@ -1,3 +1,46 @@
+.barra {
+  width: 100%;
+  height: 6vh;
+  font-size: 17px;
+  color: white;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.cuadros {
+  width: 100%;
+  height: 100%;
+  background-color: #1b1b1d;
+  display: block;
+}
+
+.logout {
+  height: 100%;
+  width: 25%;
+  text-align: center;
+  float: left;
+  margin-left: 120px;
+  padding-top: 12px;
+}
+
+.logout:hover {
+  background-color: black;
+  border-radius: 10px;
+}
+
+.usuario {
+  height: 100%;
+  width: 25%;
+  text-align: center;
+  margin-right: 120px;
+  padding-top: 12px;
+  float: right;
+}
+
+.linked {
+  background-color: black;
+  width: 30%;
+}
+
 .body {
   border: 0;
   margin: 0;
@@ -114,6 +157,11 @@
   }
   .container {
     width: 100%;
+  }
+  .logout,
+  .usuario {
+    margin: 0;
+    width: 50%;
   }
 }
 

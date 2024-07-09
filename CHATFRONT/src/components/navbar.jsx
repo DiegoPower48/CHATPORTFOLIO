@@ -44,21 +44,19 @@ function userheader() {
             className={`bg-body-tertiary ${styles.barra}`}
             data-bs-theme="dark"
           >
-            <Nav.Item>
-              <Link
-                className={`${styles.login} ${
-                  isHome ? styles.linked : styles.linkedoff
-                }`}
-                to="/"
-              >
+            <Nav.Item
+              className={` ${styles.cuadros} ${isHome ? styles.linked : ""}`}
+            >
+              <Link className={styles.links} to="/">
                 Login
               </Link>
             </Nav.Item>
-            <Nav.Item>
-              <Link
-                className={isregistrar ? styles.linked : styles.linkedoff}
-                to="/registrar"
-              >
+            <Nav.Item
+              className={` ${styles.cuadros} ${
+                isregistrar ? styles.linked : ""
+              }`}
+            >
+              <Link className={styles.links} to="/registrar">
                 Registrar
               </Link>
             </Nav.Item>

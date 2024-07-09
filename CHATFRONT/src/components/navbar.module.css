@@ -8,22 +8,40 @@
   justify-content: center;
 }
 
-.login {
-  margin-left: 46px;
-}
-
-.linked {
-  padding: 15px;
-  padding-left: 100px;
-  padding-right: 100px;
-  background-color: black;
-  width: 100%;
+.cuadros {
+  height: 90%;
+  padding: 0px;
+  width: 30%;
   text-align: center;
   border-radius: 20px 20px 0 0;
 }
+.links {
+  padding-top: 10px;
+  width: 100%;
+  display: block;
+  height: 100%;
+}
 
-.linkedoff {
-  padding-top: 15px;
-  padding-left: 100px;
-  padding-right: 100px;
+.linked {
+  background-color: black;
+  width: 30%;
+}
+
+@media (max-width: 559px) {
+  .barra {
+    height: 15vh;
+    width: 100%;
+    align-content: normal;
+  }
+  .cuadros {
+    font-size: 20px;
+    width: 100%;
+    padding: 0px;
+    display: block;
+    height: 50%;
+    border-radius: 0px;
+  }
+  .links {
+    padding-top: 12px;
+  }
 }

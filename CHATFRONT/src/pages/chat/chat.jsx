@@ -2,7 +2,6 @@ import styles from "./chat.module.css";
 import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import io from "socket.io-client";
-
 import { useAuth } from "../../context/AuthContext";
 
 function Chat() {
@@ -51,54 +50,79 @@ function Chat() {
   };
 
   return (
-    <div className={styles.body}>
-      <div translate="no" className={styles.container}>
-        <div className={styles.chat}>
-          <form
-            onSubmit={handleSubmit(enviaralback)}
-            className={styles.cuadrochat}
-          >
-            <h1 className={styles.titulochat}>{`SALA: ${room} `}</h1>
+    <div>
+      <Header />
+      <div className={styles.body}>
+        <div translate="no" className={styles.container}>
+          <div className={styles.chat}>
+            <form
+              onSubmit={handleSubmit(enviaralback)}
+              className={styles.cuadrochat}
+            >
+              <h1 className={styles.titulochat}>{`SALA: ${room} `}</h1>
 
-            <ul className={styles.mensajes}>
-              <li className={styles.reglas}>
-                "Recuerda que en esta web, esta prohibida la discriminación o su
-                uso para incitar al odio o violencia, cualquier usuario que
-                genere conflictos sera baneado permanentemente",
-              </li>
-              {messages.map((message, i) => (
-                <li
-                  key={i}
-                  className={[
-                    nombreLocal === message.nombre
-                      ? styles.textoenviadospropios
-                      : styles.textoenviadoajeno,
-                  ]}
-                >
-                  <span>
-                    {[nombreLocal === message.nombre ? "😀" : "🐷"]}
-                    {message.nombre}:
-                  </span>
-                  <br />
-                  <span>{message.comentario}</span>
+              <ul className={styles.mensajes}>
+                <li className={styles.reglas}>
+                  "Recuerda que en esta web, esta prohibida la discriminación o
+                  su uso para incitar al odio o violencia, cualquier usuario que
+                  genere conflictos sera baneado permanentemente",
                 </li>
-              ))}
-              <div ref={messagesEndRef} />
-            </ul>
+                {messages.map((message, i) => (
+                  <li
+                    key={i}
+                    className={[
+                      nombreLocal === message.nombre
+                        ? styles.textoenviadospropios
+                        : styles.textoenviadoajeno,
+                    ]}
+                  >
+                    <span>
+                      {[nombreLocal === message.nombre ? "😀" : "🐷"]}
+                      {message.nombre}:
+                    </span>
+                    <br />
+                    <span>{message.comentario}</span>
+                  </li>
+                ))}
+                <div ref={messagesEndRef} />
+              </ul>
 
-            <input
-              name="foo"
-              autoComplete="off"
-              type="text"
-              placeholder="Escribe un mensaje xD"
-              id="input"
-              {...register("comentario", { required: true })}
-              className={styles.escribir}
-            />
-          </form>
+              <input
+                name="foo"
+                autoComplete="off"
+                type="text"
+                placeholder="Escribe un mensaje xD"
+                id="input"
+                {...register("comentario", { required: true })}
+                className={styles.escribir}
+              />
+            </form>
+          </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function Header() {
+  const { logout } = useAuth();
+  const usernombre = localStorage.getItem("nombre");
+
+  const handleLogout = () => {
+    logout();
+  };
+
+  return (
+    <>
+      <header className={styles.barra}>
+        <div className={styles.cuadros}>
+          <div onClick={handleLogout} className={styles.logout}>
+            Logout
+          </div>
+          <div className={styles.usuario}>{"LOGEADO COMO: " + usernombre}</div>
+        </div>
+      </header>
+    </>
   );
 }
 

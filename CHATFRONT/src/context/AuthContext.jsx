@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post("verify", token);
       if (res.status === 200) {
-        setUser(data.nombre);
+        setUser(res.data.nombre);
         setLoading(false);
         setIsAuthenticated(true);
       }

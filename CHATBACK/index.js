@@ -21,6 +21,19 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
+app.use(
+  cors({
+    origin: [
+      "https://chatportfolio-production-c9b8.up.railway.app",
+      "https://chatportfolio.vercel.app",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+    credentials: true,
+  })
+);
+app.use(logger("dev"));
+
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
@@ -39,8 +52,6 @@ const io = new Server(server, {
 });
 
 sockets(io);
-
-app.use(logger("dev"));
 
 server.listen(port, () => {
   console.log(`escuchando el puerto: ${port}`);

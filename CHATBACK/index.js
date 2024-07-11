@@ -32,8 +32,20 @@ app.use(
     credentials: true,
   })
 );
-app.use(logger("dev"));
 
+app.options(
+  "*",
+  cors({
+    origin: [
+      "https://chatportfolio-production-c9b8.up.railway.app",
+      "https://chatportfolio.vercel.app",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+    credentials: true,
+  })
+);
+app.use(logger("dev"));
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {

@@ -24,7 +24,10 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ["https://chatportfolio-production-c9b8.up.railway.app"],
+    origin: [
+      "https://chatportfolio-production-c9b8.up.railway.app",
+      "https://chatportfolio.vercel.app",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
     credentials: true,

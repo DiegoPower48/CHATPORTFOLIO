@@ -4,8 +4,6 @@ import { useForm } from "react-hook-form";
 import io from "socket.io-client";
 import { useAuth } from "../../context/AuthContext";
 
-const URL = import.meta.env.URL_CHAT;
-
 function Chat() {
   const { register, handleSubmit, reset } = useForm();
   const room = localStorage.getItem("room");

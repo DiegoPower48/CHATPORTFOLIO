@@ -46,6 +46,7 @@
 }
 
 .form {
+  padding-top: 100px;
   padding-left: 50px;
   width: 45%;
   display: block;
@@ -131,6 +132,7 @@
     border-radius: 0;
   }
   .form {
-    padding-left: 0;
+    padding-left: 10px;
+    padding-top: 0px;
   }
 }

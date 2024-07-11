@@ -51,16 +51,6 @@ function Login() {
         {click1 ? (
           <form className={styles.form}>
             <div className="text-center">
-              <br />
-              <img
-                src="https://th.bing.com/th/id/R.f81a6f373c244b1f70f4b7402b5ab372?rik=rbXh4ieLuKt%2bmA&riu=http%3a%2f%2flogos-download.com%2fwp-content%2fuploads%2f2016%2f09%2fReact_logo_logotype_emblem.png&ehk=QhGOkKcUKCU7FBQgHOajOiJqJBACUTD2Ni6LsfqzCEA%3d&risl=&pid=ImgRaw&r=0"
-                style={{
-                  height: "80px",
-                  margin: "20px",
-                  paddingLeft: "200px",
-                }}
-                alt="logo"
-              />
               <h1 className="mt-1 mb-5 pb-1">BIENVENIDO A MI CHAT 🎉🎉🎉</h1>
             </div>
             <p>PORFAVOR INGRESA TUS DATOS:</p>
@@ -119,16 +109,6 @@ function Login() {
           <div>
             <form className={styles.form}>
               <div className="text-center">
-                <br />
-                <img
-                  src="https://th.bing.com/th/id/R.f81a6f373c244b1f70f4b7402b5ab372?rik=rbXh4ieLuKt%2bmA&riu=http%3a%2f%2flogos-download.com%2fwp-content%2fuploads%2f2016%2f09%2fReact_logo_logotype_emblem.png&ehk=QhGOkKcUKCU7FBQgHOajOiJqJBACUTD2Ni6LsfqzCEA%3d&risl=&pid=ImgRaw&r=0"
-                  style={{
-                    height: "80px",
-                    margin: "20px",
-                    paddingLeft: "200px",
-                  }}
-                  alt="logo"
-                />
                 <h1 className="mt-1 mb-5 pb-1">REGISTRO 🎉🎉🎉</h1>
               </div>
               <p>PORFAVOR INGRESA TUS DATOS:</p>

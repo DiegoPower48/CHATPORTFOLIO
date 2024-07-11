@@ -130,4 +130,7 @@
     width: 50%;
     border-radius: 0;
   }
+  .form {
+    padding-left: 0;
+  }
 }

@@ -23,6 +23,8 @@ const socket = (io) => {
           {
             nombre: { type: String },
             comentario: { type: String },
+            hora: { type: String },
+            fecha: { type: String },
           },
           { collection: collectionName }
         )
@@ -37,6 +39,8 @@ const socket = (io) => {
         await Item.create({
           nombre: msg.nombre,
           comentario: msg.comentario,
+          hora: msg.hora,
+          fecha: msg.fecha,
         });
         console.log(
           `guardando el mensaje de: "${msg.nombre}" el cual es:"${msg.comentario}"`

@@ -1,7 +1,6 @@
 import Chat from "./pages/chat/chat";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login/Login";
-import Registrar from "./pages/Login/registrar";
 import { AuthProvider } from "./context/AuthContext";
 import ProtectedRoutes from "./pages/protected/protected";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,7 +13,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="*" element={<Login />} />
-            <Route path="/registrar" element={<Registrar />} />
             <Route element={<ProtectedRoutes />}>
               <Route path="*" element={<Chat />} />
               <Route path="/chat" element={<Chat />} />

@@ -97,12 +97,30 @@
   padding: 0.5rem 1rem;
   background: bisque;
   color: black;
+  text-align: right;
+  margin-left: 20px;
+  border-radius: 20px;
 }
 
 .textoenviadoajeno {
   padding: 0.5rem 1rem;
   background: orange;
   color: black;
+  margin-right: 20px;
+  border-radius: 20px;
+}
+
+.fechaPropia {
+  display: block;
+  float: left;
+  font-size: 13px;
+  color: rgb(255, 145, 0);
+}
+.fechaAjena {
+  display: block;
+  float: right;
+  color: rgb(255, 228, 196);
+  font-size: 13px;
 }
 
 .mensajes::-webkit-scrollbar {

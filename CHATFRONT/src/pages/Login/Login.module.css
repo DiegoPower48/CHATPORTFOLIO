@@ -21,7 +21,6 @@
   float: left;
   border-radius: 20px 20px 0 0;
   text-align: center;
-  background-color: red;
   padding-top: 5px;
 }
 .registro {
@@ -30,13 +29,11 @@
   width: 25%;
   border-radius: 20px 20px 0 0;
   text-align: center;
-  background-color: blue;
   padding-top: 5px;
 }
 
 .linked {
   background-color: black;
-  width: 30%;
 }
 
 .container {
@@ -68,21 +65,14 @@
   display: block;
   height: 50px;
   margin-bottom: 20px;
-  background-color: orange;
+  background-color: black;
+  margin-left: 12px;
 }
 
-.carrusel {
-  width: 50%;
-  background-color: red;
-  height: 100%;
-  float: right;
-  margin: 0;
-  padding: 0;
-  color: blue;
-  display: block;
-  margin: 0;
-  padding: 0;
+.boton:hover {
+  background-color: #00d8ff;
 }
+
 .paginas {
   background-color: black;
   width: 30%;

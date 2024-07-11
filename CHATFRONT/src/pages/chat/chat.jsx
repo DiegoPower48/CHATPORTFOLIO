@@ -3,12 +3,29 @@ import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import io from "socket.io-client";
 import { useAuth } from "../../context/AuthContext";
+const usernombre = localStorage.getItem("nombre");
 
 function Chat() {
   const { register, handleSubmit, reset } = useForm();
   const room = localStorage.getItem("room");
   const nombreLocal = localStorage.getItem("nombre");
   const [messages, setMessages] = useState([""]);
+
+  //MANEJO DE HORA Y FECHA►
+  const fecha = new Date();
+
+  const fechaEnviar =
+    fecha.getDate().toString().padStart(2, "0") +
+    "/" +
+    (fecha.getMonth() + 1).toString().padStart(2, "0") +
+    "/" +
+    fecha.getFullYear();
+
+  const horaEnviar =
+    fecha.getHours().toString().padStart(2, "0") +
+    ":" +
+    fecha.getMinutes().toString().padStart(2, "0");
+  //MANEJO DE HORA Y FECHA◄
 
   //REFS
   const messagesEndRef = useRef(null);
@@ -41,8 +58,12 @@ function Chat() {
     const textoEnviado = {
       nombre: nombreLocal,
       comentario: mensaje.comentario,
+      hora: horaEnviar,
+      fecha: fechaEnviar,
     };
     console.log(textoEnviado);
+    console.log(fechaEnviar);
+    console.log(horaEnviar);
 
     socket.emit(`chat${room}`, textoEnviado);
 
@@ -70,18 +91,36 @@ function Chat() {
                 {messages.map((message, i) => (
                   <li
                     key={i}
-                    className={[
+                    className={
                       nombreLocal === message.nombre
                         ? styles.textoenviadospropios
-                        : styles.textoenviadoajeno,
-                    ]}
+                        : styles.textoenviadoajeno
+                    }
                   >
                     <span>
-                      {[nombreLocal === message.nombre ? "😀" : "🐷"]}
-                      {message.nombre}:
+                      {nombreLocal === message.nombre ? "😀" : "🐷"}
+                      <strong>{message.nombre}: </strong>
+                    </span>{" "}
+                    <span
+                      className={
+                        nombreLocal === message.nombre
+                          ? styles.fechaPropia
+                          : styles.fechaAjena
+                      }
+                    >
+                      {message.fecha}
                     </span>
                     <br />
-                    <span>{message.comentario}</span>
+                    <span>{message.comentario}</span>{" "}
+                    <span
+                      className={
+                        nombreLocal === message.nombre
+                          ? styles.fechaPropia
+                          : styles.fechaAjena
+                      }
+                    >
+                      {message.hora}
+                    </span>
                   </li>
                 ))}
                 <div ref={messagesEndRef} />
@@ -91,7 +130,7 @@ function Chat() {
                 name="foo"
                 autoComplete="off"
                 type="text"
-                placeholder="Escribe un mensaje xD"
+                placeholder="Escribe un mensaje porfavor :)"
                 id="input"
                 {...register("comentario", { required: true })}
                 className={styles.escribir}
@@ -106,7 +145,6 @@ function Chat() {
 
 function Header() {
   const { logout } = useAuth();
-  const usernombre = localStorage.getItem("nombre");
 
   const handleLogout = () => {
     logout();
@@ -119,7 +157,7 @@ function Header() {
           <div onClick={handleLogout} className={styles.logout}>
             Logout
           </div>
-          <div className={styles.usuario}>{"LOGEADO COMO: " + usernombre}</div>
+          <div className={styles.usuario}>{"Usuario: " + usernombre}</div>
         </div>
       </header>
     </>

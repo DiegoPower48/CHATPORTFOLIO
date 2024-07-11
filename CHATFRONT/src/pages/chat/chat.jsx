@@ -30,7 +30,7 @@ function Chat() {
   const messagesEndRef = useRef(null);
 
   // SOCKETS Y FUNCIONES
-  const socket = io.connect("http://localhost:5000", {
+  const socket = io.connect("https://awake-caring-production.up.railway.app", {
     query: `room=${room}`,
   });
 

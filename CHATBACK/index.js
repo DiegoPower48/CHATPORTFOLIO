@@ -22,10 +22,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 const corsOptions = {
-  origin: [
-    "http://localhost:5173",
-    "https://chatportfolio-production.up.railway.app",
-  ],
+  origin: ["https://chatportfolio-production-c9b8.up.railway.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type"],
   credentials: true,

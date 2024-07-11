@@ -32,10 +32,7 @@ app.use(cors(corsOptions));
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: [
-      "http://localhost:5173",
-      "https://chatportfolio-production.up.railway.app",
-    ],
+    origin: ["https://chatportfolio-production-c9b8.up.railway.app"],
     methods: ["GET", "POST"],
     credentials: true,
   },

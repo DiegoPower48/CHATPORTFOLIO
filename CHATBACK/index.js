@@ -21,19 +21,12 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
-const corsOptions = {
-  origin: ["https://chatportfolio-production-c9b8.up.railway.app"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type"],
-  credentials: true,
-};
-app.use(cors(corsOptions));
-
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: ["https://chatportfolio-production-c9b8.up.railway.app"],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
     credentials: true,
   },
   transports: ["websocket", "polling"],

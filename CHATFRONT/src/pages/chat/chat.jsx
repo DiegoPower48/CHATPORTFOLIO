@@ -3,7 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import io from "socket.io-client";
 import { useAuth } from "../../context/AuthContext";
-const usernombre = localStorage.getItem("nombre");
+
+const URL = import.meta.env.URL_CHAT;
 
 function Chat() {
   const { register, handleSubmit, reset } = useForm();
@@ -146,6 +147,7 @@ function Chat() {
 function Header() {
   const { logout } = useAuth();
 
+  const usernombre = localStorage.getItem("nombre");
   const handleLogout = () => {
     logout();
   };

@@ -34,7 +34,6 @@ const socket = (io) => {
       console.log("un usuario se ha desconectado");
     });
     socket.on(`chat${room}`, async (msg) => {
-      console.log(msg);
       try {
         await Item.create({
           nombre: msg.nombre,
@@ -54,7 +53,6 @@ const socket = (io) => {
       try {
         Item.find({}).then((recuperado) => {
           recuperado.map((message) => {
-            console.log(message);
             socket.emit(`chat${room}`, message);
           });
         });

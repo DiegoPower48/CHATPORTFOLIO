@@ -67,12 +67,13 @@
   position: sticky;
   top: 0;
   background-color: black;
+
+  height: 50px;
 }
 
 .cuadrochat {
   display: grid;
-  grid-template-rows: 1fr 8fr 1fr;
-  height: 100%;
+  grid-template-rows: 1fr 12fr 1fr;
 }
 
 .mensajes {

@@ -26,6 +26,7 @@ app.use(
     origin: [
       "https://chatportfolio-production-c9b8.up.railway.app",
       "https://chatportfolio.vercel.app",
+      "http://localhost:5173",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
@@ -40,6 +41,7 @@ app.options(
     origin: [
       "https://chatportfolio-production-c9b8.up.railway.app",
       "https://chatportfolio.vercel.app",
+      "http://localhost:5173",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
@@ -54,6 +56,7 @@ const io = new Server(server, {
     origin: [
       "https://chatportfolio-production-c9b8.up.railway.app",
       "https://chatportfolio.vercel.app",
+      "http://localhost:5173",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],

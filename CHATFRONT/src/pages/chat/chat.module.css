@@ -54,7 +54,6 @@
 }
 
 .container {
-  height: 100%;
   width: 50%;
   width: 50%;
   background-color: #121212;
@@ -82,7 +81,7 @@
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   word-wrap: break-word;
-  height: 70vh;
+  height: 600px;
   overflow-y: auto;
   margin-bottom: 40px;
 }

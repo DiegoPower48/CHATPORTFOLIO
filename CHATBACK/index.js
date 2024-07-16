@@ -33,6 +33,7 @@ app.use(
   })
 );
 
+// Manejo de preflight requests
 app.options(
   "*",
   cors({
@@ -45,6 +46,7 @@ app.options(
     credentials: true,
   })
 );
+
 app.use(logger("dev"));
 const server = http.createServer(app);
 const io = new Server(server, {

@@ -45,9 +45,9 @@ function Login() {
   }, [isAutenticated, navigate]);
 
   return (
-    <div>
+    <div className={styles.container}>
       <Header clickear1={clickear1} clickear2={clickear2} click1={click1} />
-      <div className={styles.container}>
+      <div>
         {click1 ? (
           <form className={styles.form}>
             <div className="text-center">
@@ -98,7 +98,7 @@ function Login() {
             <br />
             <br />
             <button
-              className={`${styles.gradientcustom2} ${styles.boton}`}
+              className={styles.boton}
               type="submit"
               onClick={handleSubmit(Loginin)}
             >
@@ -149,7 +149,7 @@ function Login() {
               <br />
               <br />
               <button
-                className={`${styles.gradientcustom2} ${styles.boton}`}
+                className={styles.boton}
                 type="submit"
                 onClick={handleSubmit(Registrarse)}
               >
@@ -167,7 +167,7 @@ function Login() {
 function Header({ clickear1, clickear2, click1 }) {
   return (
     <>
-      <header className={styles.barra}>
+      <header>
         <div className={styles.cuadros}>
           <button
             onClick={clickear1}

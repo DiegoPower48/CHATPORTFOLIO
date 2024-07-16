@@ -167,7 +167,7 @@ function Login() {
 function Header({ clickear1, clickear2, click1 }) {
   return (
     <>
-      <header>
+      <header className={styles.barra}>
         <div className={styles.cuadros}>
           <button
             onClick={clickear1}

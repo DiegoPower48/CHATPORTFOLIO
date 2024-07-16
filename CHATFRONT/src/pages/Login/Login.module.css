@@ -81,7 +81,6 @@
 .carruselimagen {
   height: 826px;
   background-color: black;
-  position: relative;
 }
 .carruselcuadro {
   z-index: 1;
@@ -136,10 +135,14 @@
   }
   .carruselimagen,
   .carrusel {
-    height: 600px;
+    height: 599px;
   }
-}
-.carruseltexto,
-.carruselTextoTitulo {
-  font-size: medium;
+  .carruselcuadro {
+    height: 200px;
+  }
+
+  .carruseltexto,
+  .carruselTextoTitulo {
+    font-size: medium;
+  }
 }

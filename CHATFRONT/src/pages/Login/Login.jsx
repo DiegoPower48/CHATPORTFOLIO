@@ -158,7 +158,7 @@ function Login() {
             </form>{" "}
           </div>
         )}{" "}
-        <UncontrolledExample />
+        <Carrusel />
       </div>
     </div>
   );
@@ -187,7 +187,7 @@ function Header({ clickear1, clickear2, click1 }) {
   );
 }
 
-function UncontrolledExample() {
+function Carrusel() {
   const items = [
     {
       titulo: "MAURO2",

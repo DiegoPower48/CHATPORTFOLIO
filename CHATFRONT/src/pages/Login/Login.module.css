@@ -49,7 +49,7 @@
 
 .form {
   background-color: #1b1b1d;
-
+  height: 93vh;
   padding: 50px;
   width: 50%;
   display: block;
@@ -86,13 +86,21 @@
   float: right;
 }
 
-.carruselimagen {
+.carruselitem {
   height: 93vh;
   background-color: black;
 }
+
 .carruselcuadro {
   z-index: 1;
-  height: 25%;
+  height: 100%;
+  display: block;
+}
+
+.carruselimagen {
+  margin-top: 30px;
+  height: 65vh;
+  top: 0;
   display: block;
 }
 .carruselTextoTitulo {
@@ -111,13 +119,6 @@
   padding: 1px;
   background-color: white;
 }
-
-/* @media (max-width: 1280px) {
-  .links,
-  .registro {
-    width: 40%;
-  }
-} */
 
 @media (max-width: 559px) {
   .container {
@@ -138,10 +139,9 @@
     border-radius: 0;
   }
   .form {
-    height: 600px;
     padding: 10px 10px 0px 10px;
   }
-  .carruselimagen,
+  .carruselitem,
   .carrusel {
     height: 599px;
     height: 93vh;

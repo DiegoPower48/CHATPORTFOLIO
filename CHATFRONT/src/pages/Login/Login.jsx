@@ -208,16 +208,15 @@ function Carrusel() {
   return (
     <Carousel className={styles.carrusel}>
       {items.map((item, i) => (
-        <Carousel.Item
-          key={i}
-          interval={4000}
-          style={{
-            backgroundImage: `url(${item.fondo})`,
-            backgroundSize: "100% 100%",
-          }}
-          className={styles.carruselimagen}
-        >
+        <Carousel.Item key={i} interval={4000} className={styles.carruselitem}>
           <Carousel.Caption className={styles.carruselcuadro}>
+            <span
+              style={{
+                backgroundImage: `url(${item.fondo})`,
+                backgroundSize: "100% 100%",
+              }}
+              className={styles.carruselimagen}
+            ></span>
             <h3 className={styles.carruselTextoTitulo}>{item.titulo}</h3>
             <p className={styles.carruseltexto}>{item.descripcion}</p>
           </Carousel.Caption>

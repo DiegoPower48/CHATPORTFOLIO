@@ -158,17 +158,6 @@
 }
 
 @media (max-width: 1160px) {
-  .body {
-  }
-  .cuadrochat {
-    width: 80%;
-  }
-  .escribir {
-    width: 80vw;
-  }
-}
-
-@media (max-width: 770px) {
   .logout,
   .usuario {
     margin: 0;
@@ -178,7 +167,7 @@
     width: 100%;
   }
   .mensajes {
-    max-height: 70vh;
+    max-height: 62vh;
   }
   .escribir {
     width: 100vw;
@@ -190,7 +179,7 @@
     margin-bottom: 0;
   }
   .mensajes {
-    max-height: 70vh;
+    max-height: 62vh;
   }
 }
 

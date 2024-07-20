@@ -109,7 +109,7 @@ function Login() {
           <div>
             <form className={styles.form}>
               <div className="text-center">
-                <h1 className="mt-1 mb-5 pb-1">REGISTRO 🎉🎉🎉</h1>
+                <h1 className="mt-1 mb-5 pb-1">REGISTRO ✍✍✍</h1>
               </div>
               <p>PORFAVOR INGRESA TUS DATOS:</p>
               <br />

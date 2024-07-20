@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://portfolio-rc17.onrender.com",
+  baseURL: "https://backendportfolio-one.vercel.app",
   withCredentials: true,
 });
 

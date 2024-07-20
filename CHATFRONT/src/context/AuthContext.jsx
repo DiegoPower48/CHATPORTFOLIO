@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
         setIsAuthenticated(true);
         console.log("contexto exitoso ");
+        console.log(res.data);
         localStorage.setItem("token", res.data);
         localStorage.setItem("room", "Bienvenida");
         localStorage.setItem("nombre", data.nombre);

@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
 
   const verificar = async (token) => {
     try {
-      const res = await axios.post("verify", token);
+      const res = await axios.post("verify", { token: token });
       if (res.status === 200) {
         setUser(res.data.nombre);
         setLoading(false);

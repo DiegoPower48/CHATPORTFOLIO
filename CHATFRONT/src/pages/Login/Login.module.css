@@ -1,6 +1,6 @@
 .container {
   background-color: #1b1b1d;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   color: white;
   font-size: 17px;
@@ -11,6 +11,10 @@
   font-size: 17px;
   color: white;
   border-bottom: 1px solid whitesmoke;
+}
+
+.cuerpo {
+  height: 93vh;
 }
 
 .cuadros {
@@ -45,7 +49,7 @@
 
 .form {
   background-color: #1b1b1d;
-  height: 93vh;
+
   padding: 50px;
   width: 50%;
   display: block;
@@ -76,6 +80,7 @@
 }
 
 .carrusel {
+  height: 93vh;
   width: 50%;
   display: block;
   float: right;
@@ -139,6 +144,7 @@
   .carruselimagen,
   .carrusel {
     height: 599px;
+    height: 93vh;
   }
   .carruselcuadro {
     height: 200px;

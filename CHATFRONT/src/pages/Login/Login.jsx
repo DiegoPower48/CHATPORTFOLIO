@@ -47,7 +47,7 @@ function Login() {
   return (
     <div className={styles.container}>
       <Header clickear1={clickear1} clickear2={clickear2} click1={click1} />
-      <div>
+      <div className={styles.cuerpo}>
         {click1 ? (
           <form className={styles.form}>
             <div className="text-center">
@@ -106,58 +106,56 @@ function Login() {
             </button>
           </form>
         ) : (
-          <div>
-            <form className={styles.form}>
-              <div className="text-center">
-                <h1 className="mt-1 mb-5 pb-1">REGISTRO ✍✍✍</h1>
-              </div>
-              <p>PORFAVOR INGRESA TUS DATOS:</p>
-              <br />
-              <label>Nuevo nombre de usuario:</label>
-              <br />
-              <input
-                type="text"
-                autoComplete="username"
-                data-bs-theme="dark"
-                placeholder="Usuario"
-                className={styles.datos}
-                {...register("nombre", { required: true })}
-              />
-              <br />
-              <label>Nueva contraseña:</label>
-              <br />
-              <input
-                type="password"
-                autoComplete="current-password"
-                data-bs-theme="dark"
-                placeholder="Contraseña"
-                className={styles.datos}
-                {...register("contraseña", { required: true })}
-              />
-              <br />
-              <label>Ingresa un correo electronico:</label>
+          <form className={styles.form}>
+            <div className="text-center">
+              <h1 className="mt-1 mb-5 pb-1">REGISTRO ✍✍✍</h1>
+            </div>
+            <p>PORFAVOR INGRESA TUS DATOS:</p>
+            <br />
+            <label>Nuevo nombre de usuario:</label>
+            <br />
+            <input
+              type="text"
+              autoComplete="username"
+              data-bs-theme="dark"
+              placeholder="Usuario"
+              className={styles.datos}
+              {...register("nombre", { required: true })}
+            />
+            <br />
+            <label>Nueva contraseña:</label>
+            <br />
+            <input
+              type="password"
+              autoComplete="current-password"
+              data-bs-theme="dark"
+              placeholder="Contraseña"
+              className={styles.datos}
+              {...register("contraseña", { required: true })}
+            />
+            <br />
+            <label>Ingresa un correo electronico:</label>
 
-              <input
-                type="email"
-                autoComplete="email"
-                data-bs-theme="dark"
-                placeholder="Email"
-                className={styles.datos}
-                {...register("correo", { required: true })}
-              />
+            <input
+              type="email"
+              autoComplete="email"
+              data-bs-theme="dark"
+              placeholder="Email"
+              className={styles.datos}
+              {...register("correo", { required: true })}
+            />
 
-              <br />
-              <br />
-              <button
-                className={styles.boton}
-                type="submit"
-                onClick={handleSubmit(Registrarse)}
-              >
-                REGISTRARSE
-              </button>
-            </form>{" "}
-          </div>
-        )}{" "}
+            <br />
+            <br />
+            <button
+              className={styles.boton}
+              type="submit"
+              onClick={handleSubmit(Registrarse)}
+            >
+              REGISTRARSE
+            </button>
+          </form>
+        )}
         <Carrusel />
       </div>
     </div>

@@ -48,19 +48,20 @@
 
 .container {
   width: 100%;
-  height: calc(100vh - var(--tamañogeneral));
+
   box-sizing: border-box;
   background-color: #121212;
 }
 .chat {
-  height: 100%;
   display: flex;
+  height: calc(100vh - var(--tamañogeneral));
   justify-content: center;
   align-content: center;
   background-color: #121212;
 }
 
 .cuadrochat {
+  height: calc(100vh - var(--tamañogeneral));
   height: 100%;
   width: 50%;
 }
@@ -125,15 +126,16 @@
 
 .escribir {
   margin-top: 8px;
+  margin-bottom: 20px;
   border-radius: 9999px;
   border: 3px solid black;
   border-style: double;
   background-color: white;
-  width: 100%;
+  width: 50vw;
   height: 4vh;
   padding: 20px;
   color: black;
-  position: sticky;
+  position: fixed;
   bottom: 0px;
 }
 .mensajes::-webkit-scrollbar {
@@ -161,6 +163,9 @@
   .cuadrochat {
     width: 80%;
   }
+  .escribir {
+    width: 80vw;
+  }
 }
 
 @media (max-width: 770px) {
@@ -171,6 +176,9 @@
   }
   .cuadrochat {
     width: 100%;
+  }
+  .escribir {
+    width: 100vw;
   }
 }
 

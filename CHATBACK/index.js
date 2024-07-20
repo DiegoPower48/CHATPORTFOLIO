@@ -23,12 +23,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: [
-      "https://chatportfolio-1.onrender.com",
-      "https://chatportfolio-production-c9b8.up.railway.app",
-      "https://chatportfolio.vercel.app",
-      "http://localhost:5173",
-    ],
+    origin: ["https://chatportfolio.up.railway.app", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
@@ -39,10 +34,7 @@ app.use(
 app.options(
   "*",
   cors({
-    origin: [
-      "https://chatportfolio-production-c9b8.up.railway.app",
-      "http://localhost:5173",
-    ],
+    origin: ["https://chatportfolio.up.railway.app", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
@@ -53,10 +45,7 @@ app.use(logger("dev"));
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: [
-      "https://chatportfolio-production-c9b8.up.railway.app",
-      "http://localhost:5173",
-    ],
+    origin: ["https://chatportfolio.up.railway.app", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type"],
     credentials: true,

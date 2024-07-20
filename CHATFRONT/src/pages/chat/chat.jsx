@@ -43,7 +43,6 @@ function Chat() {
     const receiveMessage = (message) =>
       setMessages((state) => [...state, message]);
 
-    console.log("emitinedo");
     socket.on(`chat${room}`, receiveMessage);
 
     return () => {
@@ -60,9 +59,6 @@ function Chat() {
       hora: horaEnviar,
       fecha: fechaEnviar,
     };
-    console.log(textoEnviado);
-    console.log(fechaEnviar);
-    console.log(horaEnviar);
 
     socket.emit(`chat${room}`, textoEnviado);
 

@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../context/Authaxios";
 
 import toast, { Toaster } from "react-hot-toast";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 
@@ -24,12 +24,10 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post("registro", data);
       if (res.status === 200) {
-        console.log(res.status);
         setUser(data.nombre);
         setLoading(false);
         setIsAuthenticated(true);
-        console.log("contexto exitoso ");
-        console.log(res.data);
+
         localStorage.setItem("token", res.data);
         localStorage.setItem("room", "Bienvenida");
         localStorage.setItem("nombre", data.nombre);
@@ -47,8 +45,6 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post("loginin", data);
       if (res.status === 200) {
-        console.log(res.status);
-        console.log("response");
         setUser(data.nombre);
         setLoading(false);
         setIsAuthenticated(true);
@@ -86,7 +82,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("nombre");
     localStorage.removeItem("room");
-    console.log("front: se elimino el token");
+
     setUser(null);
     setIsAuthenticated(false);
   };
@@ -102,17 +98,15 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    console.log("buscando token");
-    console.log(token);
+
     async function checkLogin() {
       if (token === undefined) {
-        console.log("front: No hay token");
         setUser(null);
         setLoading(false);
         setIsAuthenticated(false);
         return;
       }
-      console.log("verificando el token encontrado");
+
       verificar(token);
     }
     checkLogin();

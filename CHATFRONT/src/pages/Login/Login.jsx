@@ -1,7 +1,6 @@
-import React from "react";
 import Carousel from "react-bootstrap/Carousel";
-
 import styles from "./Login.module.css";
+
 import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -10,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   const { register, handleSubmit, watch } = useForm();
   const { isAutenticated, Login, Registrar } = useAuth();
-
   const [click1, setClick1] = useState(true);
 
   const navigate = useNavigate();
@@ -21,8 +19,8 @@ function Login() {
   const clickear1 = () => {
     setClick1(true);
   };
-  const informacionFormulario = watch();
 
+  const informacionFormulario = watch();
   const roomselected = watch("room");
   const datos = watch();
 

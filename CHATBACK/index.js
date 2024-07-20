@@ -56,6 +56,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: [
+      "https://chatportfolio-1.onrender.com",
       "https://chatportfolio-production-c9b8.up.railway.app",
       "https://chatportfolio.vercel.app",
       "http://localhost:5173",

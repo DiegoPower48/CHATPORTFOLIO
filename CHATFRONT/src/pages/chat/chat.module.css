@@ -92,7 +92,7 @@
   word-wrap: break-word;
   overflow-y: auto;
   list-style: none;
-  max-height: 70vh;
+  max-height: 67vh;
   width: 100%;
 }
 
@@ -125,7 +125,7 @@
 }
 
 .escribir {
-  margin-top: 16px;
+  margin-top: 20px;
   margin-bottom: 30px;
   border-radius: 9999px;
   border: 3px solid black;
@@ -177,6 +177,9 @@
   .cuadrochat {
     width: 100%;
   }
+  .mensajes {
+    max-height: 70vh;
+  }
   .escribir {
     width: 100vw;
   }
@@ -187,7 +190,7 @@
     margin-bottom: 0;
   }
   .mensajes {
-    max-height: 67vh;
+    max-height: 70vh;
   }
 }
 

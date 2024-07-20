@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
         setIsAuthenticated(true);
         console.log("contexto exitoso ");
+        localStorage.setItem("token", res.data);
         localStorage.setItem("room", "Bienvenida");
         localStorage.setItem("nombre", data.nombre);
       }
@@ -52,6 +53,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
         localStorage.setItem("room", room);
         localStorage.setItem("nombre", data.nombre);
+        localStorage.setItem("token", res.data);
       }
     } catch (error) {
       setErrors([error.response.data]);
@@ -80,7 +82,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    Cookies.remove("token");
+    localStorage.removeItem("token");
     localStorage.removeItem("nombre");
     localStorage.removeItem("room");
     console.log("front: se elimino el token");
@@ -98,11 +100,11 @@ export const AuthProvider = ({ children }) => {
   }, [errors]);
 
   useEffect(() => {
-    const cookie = Cookies.get();
-    console.log("buscando cookie");
-    console.log(cookie);
+    const token = localStorage.getItem("token");
+    console.log("buscando token");
+    console.log(token);
     async function checkLogin() {
-      if (cookie.token === undefined) {
+      if (token === undefined) {
         console.log("front: No hay token");
         setUser(null);
         setLoading(false);
@@ -110,7 +112,7 @@ export const AuthProvider = ({ children }) => {
         return;
       }
       console.log("verificando el token encontrado");
-      verificar(cookie.token);
+      verificar(token);
     }
     checkLogin();
   }, []);

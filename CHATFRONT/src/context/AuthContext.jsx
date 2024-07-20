@@ -99,6 +99,8 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const cookie = Cookies.get();
+    console.log("buscando cookie");
+    console.log(cookie);
     async function checkLogin() {
       if (cookie.token === undefined) {
         console.log("front: No hay token");
@@ -107,6 +109,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(false);
         return;
       }
+      console.log("verificando el token encontrado");
       verificar(cookie.token);
     }
     checkLogin();

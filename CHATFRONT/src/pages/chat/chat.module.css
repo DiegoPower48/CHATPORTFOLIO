@@ -193,3 +193,7 @@
     grid-column-end: 2;
   }
 }
+
+* {
+  transition: all 0.3s ease-in-out;
+}

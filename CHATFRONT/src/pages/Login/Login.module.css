@@ -141,14 +141,6 @@
   .form {
     padding: 10px 10px 0px 10px;
   }
-  .carruselitem,
-  .carrusel {
-    height: 599px;
-    height: 93vh;
-  }
-  .carruselcuadro {
-    height: 200px;
-  }
 
   .carruseltexto,
   .carruselTextoTitulo {

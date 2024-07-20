@@ -1,20 +1,29 @@
+.body {
+  height: 100vh;
+  width: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  --tamañogeneral: 7vh;
+}
+
 .barra {
   width: 100%;
-  height: 6vh;
+  height: var(--tamañogeneral);
   font-size: 17px;
   color: white;
   border-bottom: 1px solid whitesmoke;
+  position: sticky;
+  top: 0;
+  background-color: #121212;
+  box-sizing: border-box;
 }
 
 .cuadros {
-  width: 100%;
-  height: 100%;
   background-color: #1b1b1d;
-  display: block;
 }
 
 .logout {
   height: 100%;
+  display: block;
   width: 25%;
   text-align: center;
   float: left;
@@ -29,6 +38,7 @@
 
 .usuario {
   height: 100%;
+  display: block;
   width: 25%;
   text-align: center;
   margin-right: 120px;
@@ -36,61 +46,53 @@
   float: right;
 }
 
-.linked {
-  background-color: black;
-  width: 30%;
-}
-
-.body {
-  border: 0;
-  margin: 0;
-  height: 94vh;
-  width: 100%;
-  background-color: #121212;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-}
-
 .container {
-  width: 50%;
-  width: 50%;
+  width: 100%;
+  height: calc(100vh - var(--tamañogeneral));
+  box-sizing: border-box;
   background-color: #121212;
 }
-
-.titulochat {
-  color: rgb(223, 213, 194);
-  font-size: 40px;
-  text-align: center;
-  width: 100%;
-  position: sticky;
-  top: 0;
-  background-color: black;
-
-  height: 50px;
+.chat {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: #121212;
 }
 
 .cuadrochat {
-  display: grid;
-  grid-template-rows: 1fr 12fr 1fr;
+  height: 100%;
+  width: 50%;
+}
+
+.titulochat {
+  position: absolute;
+  color: rgb(223, 213, 194);
+  font-size: 40px;
+  text-align: center;
+  background-color: black;
+  display: block;
+  position: sticky;
+  top: 0;
+}
+.reglas {
+  background: black;
+  color: white;
+  display: block;
+  text-align: center;
+  position: sticky;
+  top: 0;
 }
 
 .mensajes {
-  width: 100%;
   overflow-y: scroll;
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   word-wrap: break-word;
-  height: 600px;
   overflow-y: auto;
-  margin-bottom: 40px;
-}
-.reglas {
-  padding: 0.5rem 1rem;
-  background: black;
-  color: white;
-  text-align: center;
+  list-style: none;
+  max-height: 70vh;
+  width: 100%;
 }
 
 .textoenviadospropios {
@@ -98,7 +100,6 @@
   background: bisque;
   color: black;
   text-align: right;
-  margin-left: 20px;
   border-radius: 20px;
 }
 
@@ -106,7 +107,6 @@
   padding: 0.5rem 1rem;
   background: orange;
   color: black;
-  margin-right: 20px;
   border-radius: 20px;
 }
 
@@ -123,6 +123,19 @@
   font-size: 13px;
 }
 
+.escribir {
+  margin-top: 8px;
+  border-radius: 9999px;
+  border: 3px solid black;
+  border-style: double;
+  background-color: white;
+  width: 100%;
+  height: 4vh;
+  padding: 20px;
+  color: black;
+  position: sticky;
+  bottom: 0px;
+}
 .mensajes::-webkit-scrollbar {
   width: var(--width, 15px);
   background: white;
@@ -142,55 +155,29 @@
   background: white;
 }
 
-.escribir {
-  border-radius: 9999px;
-  border: 3px solid black;
-  border-style: double;
-  background-color: white;
-  margin-top: -20px;
-  width: 100%;
-  height: 30px;
-  padding: 20px;
-  color: black;
-  position: sticky;
-  bottom: 0px;
-  bottom: 0px;
-}
-
 @media (max-width: 1160px) {
   .body {
-    padding: 0px;
-    grid-template-columns: 1fr 8fr 1fr;
   }
-  .container {
+  .cuadrochat {
     width: 80%;
   }
 }
 
 @media (max-width: 770px) {
-  .body {
-    display: block;
-    padding: 0px;
-    grid-template-columns: 1fr 10fr 1fr;
-  }
-  .container {
-    width: 100%;
-  }
   .logout,
   .usuario {
     margin: 0;
     width: 50%;
   }
+  .cuadrochat {
+    width: 100%;
+  }
 }
 
 @media (max-width: 650px) {
   .container {
-    padding-left: 0px;
-    grid-template-columns: 1fr;
   }
   .chat {
-    grid-column-start: 1;
-    grid-column-end: 2;
   }
 }
 

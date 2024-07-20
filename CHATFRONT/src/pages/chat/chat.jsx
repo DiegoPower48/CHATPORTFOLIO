@@ -70,72 +70,69 @@ function Chat() {
   };
 
   return (
-    <div>
+    <div className={styles.body}>
       <Header />
-      <div className={styles.body}>
-        <div translate="no" className={styles.container}>
-          <div className={styles.chat}>
-            <form
-              onSubmit={handleSubmit(enviaralback)}
-              className={styles.cuadrochat}
-            >
-              <h1 className={styles.titulochat}>{`SALA: ${room} `}</h1>
-
-              <ul className={styles.mensajes}>
-                <li className={styles.reglas}>
-                  "Recuerda que en esta web, esta prohibida la discriminación o
-                  su uso para incitar al odio o violencia, cualquier usuario que
-                  genere conflictos sera baneado permanentemente",
-                </li>
-                {messages.map((message, i) => (
-                  <li
-                    key={i}
+      <div className={styles.container}>
+        <div className={styles.chat}>
+          <form
+            onSubmit={handleSubmit(enviaralback)}
+            className={styles.cuadrochat}
+          >
+            <h1 className={styles.titulochat}>{`SALA: ${room} `}</h1>
+            <span className={styles.reglas}>
+              "Recuerda que en esta web, esta prohibida la discriminación o su
+              uso para incitar al odio o violencia, cualquier usuario que genere
+              conflictos sera baneado permanentemente",
+            </span>
+            <div className={styles.mensajes}>
+              {messages.map((message, i) => (
+                <li
+                  key={i}
+                  className={
+                    nombreLocal === message.nombre
+                      ? styles.textoenviadospropios
+                      : styles.textoenviadoajeno
+                  }
+                >
+                  <span>
+                    {nombreLocal === message.nombre ? "😀" : "🐷"}
+                    <strong>{message.nombre}: </strong>
+                  </span>{" "}
+                  <span
                     className={
                       nombreLocal === message.nombre
-                        ? styles.textoenviadospropios
-                        : styles.textoenviadoajeno
+                        ? styles.fechaPropia
+                        : styles.fechaAjena
                     }
                   >
-                    <span>
-                      {nombreLocal === message.nombre ? "😀" : "🐷"}
-                      <strong>{message.nombre}: </strong>
-                    </span>{" "}
-                    <span
-                      className={
-                        nombreLocal === message.nombre
-                          ? styles.fechaPropia
-                          : styles.fechaAjena
-                      }
-                    >
-                      {message.fecha}
-                    </span>
-                    <br />
-                    <span>{message.comentario}</span>{" "}
-                    <span
-                      className={
-                        nombreLocal === message.nombre
-                          ? styles.fechaPropia
-                          : styles.fechaAjena
-                      }
-                    >
-                      {message.hora}
-                    </span>
-                  </li>
-                ))}
-                <div ref={messagesEndRef} />
-              </ul>
+                    {message.fecha}
+                  </span>
+                  <br />
+                  <span>{message.comentario}</span>{" "}
+                  <span
+                    className={
+                      nombreLocal === message.nombre
+                        ? styles.fechaPropia
+                        : styles.fechaAjena
+                    }
+                  >
+                    {message.hora}
+                  </span>
+                </li>
+              ))}
+              <div ref={messagesEndRef} />
+            </div>
 
-              <input
-                name="foo"
-                autoComplete="off"
-                type="text"
-                placeholder="Escribe un mensaje porfavor :)"
-                id="input"
-                {...register("comentario", { required: true })}
-                className={styles.escribir}
-              />
-            </form>
-          </div>
+            <input
+              name="foo"
+              autoComplete="off"
+              type="text"
+              placeholder="Escribe un mensaje porfavor :)"
+              id="input"
+              {...register("comentario", { required: true })}
+              className={styles.escribir}
+            />
+          </form>
         </div>
       </div>
     </div>

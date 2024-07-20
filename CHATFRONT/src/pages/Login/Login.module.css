@@ -7,7 +7,7 @@
 }
 
 .barra {
-  height: 50px;
+  height: 7vh;
   font-size: 17px;
   color: white;
   border-bottom: 1px solid whitesmoke;
@@ -45,7 +45,7 @@
 
 .form {
   background-color: #1b1b1d;
-  height: 826px;
+  height: 93vh;
   padding: 50px;
   width: 50%;
   display: block;
@@ -82,7 +82,7 @@
 }
 
 .carruselimagen {
-  height: 826px;
+  height: 93vh;
   background-color: black;
 }
 .carruselcuadro {

@@ -93,7 +93,7 @@ function Chat() {
                   <span>
                     {nombreLocal === message.nombre ? "😀" : "🐷"}
                     <strong>{message.nombre}: </strong>
-                  </span>{" "}
+                  </span>
                   <span
                     className={
                       nombreLocal === message.nombre
@@ -103,8 +103,6 @@ function Chat() {
                   >
                     {message.fecha}
                   </span>
-                  <br />
-                  <span>{message.comentario}</span>{" "}
                   <span
                     className={
                       nombreLocal === message.nombre
@@ -112,8 +110,10 @@ function Chat() {
                         : styles.fechaAjena
                     }
                   >
-                    {message.hora}
+                    {`||${message.hora}|| `}
                   </span>
+                  <br />
+                  <span>{message.comentario}</span>
                 </li>
               ))}
               <div ref={messagesEndRef} />

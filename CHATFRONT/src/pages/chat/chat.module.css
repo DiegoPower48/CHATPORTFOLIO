@@ -102,6 +102,7 @@
   color: black;
   text-align: right;
   border-radius: 20px;
+  border: 0.1px solid #121212;
 }
 
 .textoenviadoajeno {
@@ -109,15 +110,18 @@
   background: orange;
   color: black;
   border-radius: 20px;
+  border: 0.1px solid #121212;
 }
 
 .fechaPropia {
+  font-weight: bold;
   display: block;
   float: left;
   font-size: 13px;
   color: rgb(255, 145, 0);
 }
 .fechaAjena {
+  font-weight: bold;
   display: block;
   float: right;
   color: rgb(255, 228, 196);
@@ -172,9 +176,20 @@
   .escribir {
     width: 100vw;
   }
+  .body,
+  .fechaAjena,
+  .fechaPropia {
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 650px) {
+  .body,
+  .fechaAjena,
+  .fechaPropia {
+    font-size: 11px;
+  }
+
   .escribir {
     margin-bottom: 0;
   }

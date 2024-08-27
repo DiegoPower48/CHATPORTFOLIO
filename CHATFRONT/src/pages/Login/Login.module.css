@@ -65,6 +65,7 @@
 
 .boton {
   width: 100%;
+  border: 1px white solid;
   border-radius: 20px;
   display: block;
   height: 50px;
@@ -80,14 +81,21 @@
 }
 
 .carrusel {
-  height: 93vh;
+  height: 86vh;
   width: 50%;
   display: block;
   float: right;
 }
 
+.titulo {
+  background-color: black;
+  margin: 0;
+  text-align: center;
+  height: 6vh;
+}
+
 .carruselitem {
-  height: 93vh;
+  height: 87vh;
   background-color: black;
 }
 
@@ -98,8 +106,8 @@
 }
 
 .carruselimagen {
-  margin-top: 30px;
-  height: 65vh;
+  margin-top: 6vh;
+  height: 55vh;
   top: 0;
   display: block;
 }

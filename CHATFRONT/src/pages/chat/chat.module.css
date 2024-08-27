@@ -1,12 +1,12 @@
 .body {
   height: 100dvh;
-  width: 100%;
+  width: 100vw;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   --tamañogeneral: 7vh;
 }
 
 .barra {
-  width: 100%;
+  width: 100vw;
   height: var(--tamañogeneral);
   font-size: 17px;
   color: white;
@@ -22,17 +22,18 @@
 }
 
 .logout {
-  height: 100%;
   display: block;
-  width: 25%;
+  width: 15%;
   text-align: center;
   float: left;
   margin-left: 120px;
   padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .logout:hover {
-  background-color: black;
+  background-color: white;
+  color: black;
   border-radius: 10px;
 }
 
@@ -48,7 +49,6 @@
 
 .container {
   width: 100%;
-
   box-sizing: border-box;
   background-color: #121212;
 }
@@ -58,15 +58,13 @@
   justify-content: center;
   align-content: center;
   background-color: #121212;
-}
-
-.cuadrochat {
-  height: calc(100vh - var(--tamañogeneral));
-  height: 100%;
-  width: 50%;
+  width: 70vw;
+  margin-left: 15vw;
+  margin-right: 15vw;
 }
 
 .titulochat {
+  height: 7vh;
   position: absolute;
   color: rgb(223, 213, 194);
   font-size: 40px;
@@ -77,6 +75,7 @@
   top: 0;
 }
 .reglas {
+  height: 6vh;
   background: black;
   color: white;
   display: block;
@@ -92,8 +91,7 @@
   word-wrap: break-word;
   overflow-y: auto;
   list-style: none;
-  max-height: 67vh;
-  width: 100%;
+  max-height: 72dvh;
 }
 
 .textoenviadospropios {
@@ -129,15 +127,14 @@
 }
 
 .escribir {
-  margin-top: 20px;
-  margin-bottom: 30px;
   border-radius: 9999px;
   border: 3px solid black;
   border-style: double;
   background-color: white;
-  width: 50vw;
   height: 4vh;
   padding: 20px;
+  margin-bottom: 10px;
+  width: 70vw;
   color: black;
   position: fixed;
   bottom: 0px;
@@ -170,12 +167,7 @@
   .cuadrochat {
     width: 100%;
   }
-  .mensajes {
-    max-height: 62vh;
-  }
-  .escribir {
-    width: 100vw;
-  }
+
   .body,
   .fechaAjena,
   .fechaPropia {
@@ -190,11 +182,10 @@
     font-size: 11px;
   }
 
+  .chat,
   .escribir {
-    margin-bottom: 0;
-  }
-  .mensajes {
-    max-height: 62vh;
+    width: 100vw;
+    margin: 0;
   }
 }
 

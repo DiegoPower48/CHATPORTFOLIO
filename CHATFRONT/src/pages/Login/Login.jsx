@@ -49,33 +49,33 @@ function Login() {
         {click1 ? (
           <form className={styles.form}>
             <div className="text-center">
-              <h1 className="mt-1 mb-5 pb-1">BIENVENIDO A MI CHAT 🎉🎉🎉</h1>
+              <h1 className="mt-1 mb-5 pb-1">WELCOME TO MY CHAT 🎉</h1>
             </div>
-            <p>PORFAVOR INGRESA TUS DATOS:</p>
+            <p>PLEASE ENTER YOUR INFORMATION:</p>
             <br />
-            <label>Nombre de usuario:</label>
+            <label>Username:</label>
             <br />
             <input
               type="text"
               autoComplete="username"
               data-bs-theme="dark"
-              placeholder="Usuario"
+              placeholder="Username"
               className={styles.datos}
               {...register("nombre", { required: true })}
             />
             <br />
-            <label>Contraseña:</label>
+            <label>Password:</label>
             <br />
             <input
               type="password"
               autoComplete="current-password"
               data-bs-theme="dark"
-              placeholder="Contraseña"
+              placeholder="Password"
               className={styles.datos}
               {...register("contraseña", { required: true })}
             />
             <br />
-            <label>Ingresa la sala a la que deseas conectarte: </label>
+            <label>Enter the room you wish to connect to: </label>
             <br />
             <select
               data-bs-theme="dark"
@@ -100,39 +100,39 @@ function Login() {
               type="submit"
               onClick={handleSubmit(Loginin)}
             >
-              INGRESAR
+              Login
             </button>
           </form>
         ) : (
           <form className={styles.form}>
             <div className="text-center">
-              <h1 className="mt-1 mb-5 pb-1">REGISTRO ✍✍✍</h1>
+              <h1 className="mt-1 mb-5 pb-1">SIGN UP ✍✍✍</h1>
             </div>
-            <p>PORFAVOR INGRESA TUS DATOS:</p>
+            <p>PLEASE ENTER YOUR INFORMATION:</p>
             <br />
-            <label>Nuevo nombre de usuario:</label>
+            <label>New Username:</label>
             <br />
             <input
               type="text"
               autoComplete="username"
               data-bs-theme="dark"
-              placeholder="Usuario"
+              placeholder="Username"
               className={styles.datos}
               {...register("nombre", { required: true })}
             />
             <br />
-            <label>Nueva contraseña:</label>
+            <label>New Password:</label>
             <br />
             <input
               type="password"
               autoComplete="current-password"
               data-bs-theme="dark"
-              placeholder="Contraseña"
+              placeholder="Password"
               className={styles.datos}
               {...register("contraseña", { required: true })}
             />
             <br />
-            <label>Ingresa un correo electronico:</label>
+            <label>Enter your email:</label>
 
             <input
               type="email"
@@ -150,10 +150,11 @@ function Login() {
               type="submit"
               onClick={handleSubmit(Registrarse)}
             >
-              REGISTRARSE
+              Sign Up
             </button>
           </form>
         )}
+        <h1 className={styles.titulo}>Share a photo of your pet</h1>
         <Carrusel />
       </div>
     </div>
@@ -175,7 +176,7 @@ function Header({ clickear1, clickear2, click1 }) {
             onClick={clickear2}
             className={` ${styles.registro} ${!click1 ? styles.linked : ""}`}
           >
-            Registro
+            Sign Up
           </button>
         </div>
       </header>

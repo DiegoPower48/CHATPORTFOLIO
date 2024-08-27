@@ -74,11 +74,11 @@ function Chat() {
             onSubmit={handleSubmit(enviaralback)}
             className={styles.cuadrochat}
           >
-            <h1 className={styles.titulochat}>{`SALA: ${room} `}</h1>
+            <h1 className={styles.titulochat}>{`Chat Room: ${room} `}</h1>
             <span className={styles.reglas}>
-              "Recuerda que en esta web, esta prohibida la discriminación o su
-              uso para incitar al odio o violencia, cualquier usuario que genere
-              conflictos sera baneado permanentemente",
+              "Remember that on this website, discrimination or the use of it to
+              incite hate or violence is prohibited. Any user who causes
+              conflicts will be permanently banned",
             </span>
             <div className={styles.mensajes}>
               {messages.map((message, i) => (
@@ -123,7 +123,7 @@ function Chat() {
               name="foo"
               autoComplete="off"
               type="text"
-              placeholder="Escribe un mensaje porfavor :)"
+              placeholder="Enter a message please :)"
               id="input"
               {...register("comentario", { required: true })}
               className={styles.escribir}
@@ -150,7 +150,7 @@ function Header() {
           <div onClick={handleLogout} className={styles.logout}>
             Logout
           </div>
-          <div className={styles.usuario}>{"Usuario: " + usernombre}</div>
+          <div className={styles.usuario}>{"User: " + usernombre}</div>
         </div>
       </header>
     </>

@@ -164,9 +164,6 @@
 }
 
 @media (max-width: 600px) {
-  .container {
-    height: 80vh;
-  }
   .boton {
     display: inline;
     margin: 0;
@@ -182,6 +179,7 @@
     border-radius: 0;
   }
   .form {
+    height: 80vw;
     padding: 10px 10px 0px 10px;
   }
 

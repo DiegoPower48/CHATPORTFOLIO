@@ -165,7 +165,7 @@
 
 @media (max-width: 600px) {
   .container {
-    height: 93vh;
+    height: 100vh;
   }
 
   .boton {
@@ -196,7 +196,7 @@
   }
 
   .carruselitem {
-    height: 73vh;
+    height: 83vh;
   }
 
   .fondo {

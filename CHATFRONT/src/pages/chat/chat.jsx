@@ -30,7 +30,7 @@ function Chat() {
   const messagesEndRef = useRef(null);
 
   // SOCKETS Y FUNCIONES
-  const socket = io.connect("https://chatportfolio.onrender.com", {
+  const socket = io.connect("https://portfolio-c4l9.onrender.com", {
     query: `room=${room}`,
   });
 

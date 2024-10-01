@@ -1,6 +1,7 @@
 .container {
   background-color: #1b1b1d;
-  height: 100vh;
+  height: 100dvh;
+  height: calc(100vh - env(safe-area-inset-bottom));
   width: 100%;
   color: white;
   font-size: 17px;
@@ -56,6 +57,10 @@
   float: left;
 }
 
+.textcenter {
+  margin-bottom: 5vw;
+}
+
 .datos {
   width: 100%;
   margin: 15px;
@@ -102,12 +107,12 @@
 .carruselcuadro {
   z-index: 1;
   height: 100%;
+  align-content: center;
   display: block;
 }
 
 .carruselimagen {
-  margin-top: 6vh;
-  height: 55vh;
+  height: 40vw;
   top: 0;
   display: block;
 }
@@ -128,9 +133,39 @@
   background-color: white;
 }
 
-@media (max-width: 559px) {
+@media (max-width: 1000px) {
+  .boton {
+    display: inline;
+    margin: 0;
+  }
+  .menuroom,
+  .datos {
+    width: 100%;
+    margin: 0;
+  }
+  .links,
+  .registro {
+    width: 50%;
+    border-radius: 0;
+  }
+  .titulo {
+    height: 7vh;
+    font-size: 4vw;
+    align-content: center;
+  }
+  .form {
+    padding: 10px 10px 0px 10px;
+  }
+
+  .carruseltexto,
+  .carruselTextoTitulo {
+    font-size: medium;
+  }
+}
+
+@media (max-width: 600px) {
   .container {
-    height: 600px;
+    height: 100vh;
   }
   .boton {
     display: inline;
@@ -148,6 +183,14 @@
   }
   .form {
     padding: 10px 10px 0px 10px;
+  }
+
+  .carruselimagen {
+    height: 50vw;
+  }
+
+  .fondo {
+    height: 10vh;
   }
 
   .carruseltexto,

@@ -48,9 +48,8 @@ function Login() {
       <div className={styles.cuerpo}>
         {click1 ? (
           <form className={styles.form}>
-            <div className="text-center">
-              <h1 className="mt-1 mb-5 pb-1">WELCOME TO MY CHAT 🎉</h1>
-            </div>
+            <h1 className={styles.textcenter}>WELCOME TO MY CHAT 🎉</h1>
+
             <p>PLEASE ENTER YOUR INFORMATION:</p>
             <br />
             <label>Username:</label>

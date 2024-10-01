@@ -4,7 +4,7 @@
   height: calc(100vh - env(safe-area-inset-bottom));
   width: 100%;
   color: white;
-  font-size: 17px;
+  font-size: 2vw;
 }
 
 .barra {
@@ -164,6 +164,10 @@
 }
 
 @media (max-width: 600px) {
+  .container {
+    height: 80vh;
+  }
+
   .boton {
     display: inline;
     margin: 0;
@@ -179,12 +183,20 @@
     border-radius: 0;
   }
   .form {
-    height: 80vw;
+    height: 80vh;
+    font-size: 4vw;
     padding: 10px 10px 0px 10px;
   }
 
   .carruselimagen {
     height: 50vw;
+  }
+  .carrusel {
+    height: 70vh;
+  }
+
+  .carruselitem {
+    height: 73vh;
   }
 
   .fondo {
